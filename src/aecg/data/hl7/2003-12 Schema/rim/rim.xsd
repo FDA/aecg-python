@@ -1,0 +1,3027 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema elementFormDefault="qualified" targetNamespace="urn:hl7-org:v3" xmlns="urn:hl7-org:v3" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:include schemaLocation="../dt/datatypes.xsd"/>
+      <xs:include schemaLocation="../rim/assoc-subs.xsd"/>
+      <xs:include schemaLocation="../voc/voc.xsd"/>
+      <xs:attributeGroup name="typeInfo">
+            <xs:annotation>
+                  <xs:documentation xmlns="http://www.w3.org/1999/xhtml">
+                        <p> these attributes will be given values in restrictions of types when they
+                              are actually used in element decls in schemas generated from HMDs </p>
+                  </xs:documentation>
+            </xs:annotation>
+            <xs:attribute name="type" type="Classes"/>
+            <xs:attribute name="assoc" type="Associations"/>
+            <xs:attribute name="classCode" type="ClassCode"/>
+            <xs:attribute name="moodCode" type="ActMood"/>
+            <xs:attribute name="typeCode" type="TypeCode"/>
+            <xs:attribute name="determinerCode" type="EntityDeterminer"/>
+            <xs:attribute name="contextControlCode" type="ContextControl"/>
+      </xs:attributeGroup>
+      <xs:complexType name="AcknowledgementDetail">
+            <xs:sequence>
+                  <xs:group ref="AcknowledgementDetail.Attrs"/>
+                  <xs:group ref="AcknowledgementDetail.Assocs"/>
+            </xs:sequence>
+            <xs:attributeGroup ref="typeInfo"/>
+      </xs:complexType>
+      <xs:complexType name="Act">
+            <xs:sequence>
+                  <xs:group ref="Act.Attrs"/>
+                  <xs:group ref="Act.Assocs"/>
+            </xs:sequence>
+            <xs:attributeGroup ref="typeInfo"/>
+      </xs:complexType>
+      <xs:complexType name="ActRelationship">
+            <xs:sequence>
+                  <xs:group ref="ActRelationship.Attrs"/>
+                  <xs:group ref="ActRelationship.Assocs"/>
+            </xs:sequence>
+            <xs:attributeGroup ref="typeInfo"/>
+      </xs:complexType>
+      <xs:complexType name="Entity">
+            <xs:sequence>
+                  <xs:group ref="Entity.Attrs"/>
+                  <xs:group ref="Entity.Assocs"/>
+            </xs:sequence>
+            <xs:attributeGroup ref="typeInfo"/>
+      </xs:complexType>
+      <xs:complexType name="InfrastructureRoot">
+            <xs:sequence>
+                  <xs:group ref="InfrastructureRoot.Attrs"/>
+            </xs:sequence>
+            <xs:attributeGroup ref="typeInfo"/>
+      </xs:complexType>
+      <xs:complexType name="LanguageCommunication">
+            <xs:sequence>
+                  <xs:group ref="LanguageCommunication.Attrs"/>
+                  <xs:group ref="LanguageCommunication.Assocs"/>
+            </xs:sequence>
+            <xs:attributeGroup ref="typeInfo"/>
+      </xs:complexType>
+      <xs:complexType name="Participation">
+            <xs:sequence>
+                  <xs:group ref="Participation.Attrs"/>
+                  <xs:group ref="Participation.Assocs"/>
+            </xs:sequence>
+            <xs:attributeGroup ref="typeInfo"/>
+      </xs:complexType>
+      <xs:complexType name="Role">
+            <xs:sequence>
+                  <xs:group ref="Role.Attrs"/>
+                  <xs:group ref="Role.Assocs"/>
+            </xs:sequence>
+            <xs:attributeGroup ref="typeInfo"/>
+      </xs:complexType>
+      <xs:complexType name="RoleLink">
+            <xs:sequence>
+                  <xs:group ref="RoleLink.Attrs"/>
+                  <xs:group ref="RoleLink.Assocs"/>
+            </xs:sequence>
+            <xs:attributeGroup ref="typeInfo"/>
+      </xs:complexType>
+      <xs:complexType name="Access">
+            <xs:complexContent>
+                  <xs:extension base="Role">
+                        <xs:sequence>
+                              <xs:group ref="Access.Attrs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Account">
+            <xs:complexContent>
+                  <xs:extension base="Act">
+                        <xs:sequence>
+                              <xs:group ref="Account.Attrs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Acknowledgement">
+            <xs:complexContent>
+                  <xs:extension base="InfrastructureRoot">
+                        <xs:sequence>
+                              <xs:group ref="Acknowledgement.Attrs"/>
+                              <xs:group ref="Acknowledgement.Assocs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ActHeir">
+            <xs:complexContent>
+                  <xs:extension base="Act"/>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="AttentionLine">
+            <xs:complexContent>
+                  <xs:extension base="InfrastructureRoot">
+                        <xs:sequence>
+                              <xs:group ref="AttentionLine.Attrs"/>
+                              <xs:group ref="AttentionLine.Assocs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Batch">
+            <xs:complexContent>
+                  <xs:extension base="Transmission">
+                        <xs:sequence>
+                              <xs:group ref="Batch.Attrs"/>
+                              <xs:group ref="Batch.Assocs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="CommunicationFunction">
+            <xs:complexContent>
+                  <xs:extension base="InfrastructureRoot">
+                        <xs:sequence>
+                              <xs:group ref="CommunicationFunction.Attrs"/>
+                              <xs:group ref="CommunicationFunction.Assocs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Container">
+            <xs:complexContent>
+                  <xs:extension base="ManufacturedMaterial">
+                        <xs:sequence>
+                              <xs:group ref="Container.Attrs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ContextStructure">
+            <xs:complexContent>
+                  <xs:extension base="Act">
+                        <xs:sequence>
+                              <xs:group ref="ContextStructure.Attrs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ControlAct">
+            <xs:complexContent>
+                  <xs:extension base="Act">
+                        <xs:sequence>
+                              <xs:group ref="ControlAct.Assocs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Device">
+            <xs:complexContent>
+                  <xs:extension base="ManufacturedMaterial">
+                        <xs:sequence>
+                              <xs:group ref="Device.Attrs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="DeviceTask">
+            <xs:complexContent>
+                  <xs:extension base="Act">
+                        <xs:sequence>
+                              <xs:group ref="DeviceTask.Attrs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="DiagnosticImage">
+            <xs:complexContent>
+                  <xs:extension base="Observation">
+                        <xs:sequence>
+                              <xs:group ref="DiagnosticImage.Attrs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Diet">
+            <xs:complexContent>
+                  <xs:extension base="Supply">
+                        <xs:sequence>
+                              <xs:group ref="Diet.Attrs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Document">
+            <xs:complexContent>
+                  <xs:extension base="ContextStructure">
+                        <xs:sequence>
+                              <xs:group ref="Document.Attrs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Employee">
+            <xs:complexContent>
+                  <xs:extension base="Role">
+                        <xs:sequence>
+                              <xs:group ref="Employee.Attrs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="EntityHeir">
+            <xs:complexContent>
+                  <xs:extension base="Entity"/>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="FinancialContract">
+            <xs:complexContent>
+                  <xs:extension base="Act">
+                        <xs:sequence>
+                              <xs:group ref="FinancialContract.Attrs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="FinancialTransaction">
+            <xs:complexContent>
+                  <xs:extension base="Act">
+                        <xs:sequence>
+                              <xs:group ref="FinancialTransaction.Attrs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="InvoiceElement">
+            <xs:complexContent>
+                  <xs:extension base="Act">
+                        <xs:sequence>
+                              <xs:group ref="InvoiceElement.Attrs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="LicensedEntity">
+            <xs:complexContent>
+                  <xs:extension base="Role">
+                        <xs:sequence>
+                              <xs:group ref="LicensedEntity.Attrs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="LinkHtml">
+            <xs:complexContent>
+                  <xs:extension base="ContextStructure">
+                        <xs:sequence>
+                              <xs:group ref="LinkHtml.Attrs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="LivingSubject">
+            <xs:complexContent>
+                  <xs:extension base="Entity">
+                        <xs:sequence>
+                              <xs:group ref="LivingSubject.Attrs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="LocalAttr">
+            <xs:complexContent>
+                  <xs:extension base="ContextStructure">
+                        <xs:sequence>
+                              <xs:group ref="LocalAttr.Attrs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="LocalMarkup">
+            <xs:complexContent>
+                  <xs:extension base="ContextStructure">
+                        <xs:sequence>
+                              <xs:group ref="LocalMarkup.Attrs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="LogicalExpression">
+            <xs:complexContent>
+                  <xs:extension base="SelectionExpression">
+                        <xs:sequence>
+                              <xs:group ref="LogicalExpression.Attrs"/>
+                              <xs:group ref="LogicalExpression.Assocs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ManagedParticipation">
+            <xs:complexContent>
+                  <xs:extension base="Participation">
+                        <xs:sequence>
+                              <xs:group ref="ManagedParticipation.Attrs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ManufacturedMaterial">
+            <xs:complexContent>
+                  <xs:extension base="Material">
+                        <xs:sequence>
+                              <xs:group ref="ManufacturedMaterial.Attrs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Material">
+            <xs:complexContent>
+                  <xs:extension base="Entity">
+                        <xs:sequence>
+                              <xs:group ref="Material.Attrs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Message">
+            <xs:complexContent>
+                  <xs:extension base="Transmission">
+                        <xs:sequence>
+                              <xs:group ref="Message.Attrs"/>
+                              <xs:group ref="Message.Assocs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="NonPersonLivingSubject">
+            <xs:complexContent>
+                  <xs:extension base="LivingSubject">
+                        <xs:sequence>
+                              <xs:group ref="NonPersonLivingSubject.Attrs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Observation">
+            <xs:complexContent>
+                  <xs:extension base="Act">
+                        <xs:sequence>
+                              <xs:group ref="Observation.Attrs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Organization">
+            <xs:complexContent>
+                  <xs:extension base="Entity">
+                        <xs:sequence>
+                              <xs:group ref="Organization.Attrs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Parameter">
+            <xs:complexContent>
+                  <xs:extension base="InfrastructureRoot">
+                        <xs:sequence>
+                              <xs:group ref="Parameter.Attrs"/>
+                              <xs:group ref="Parameter.Assocs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ParameterItem">
+            <xs:complexContent>
+                  <xs:extension base="Parameter">
+                        <xs:sequence>
+                              <xs:group ref="ParameterItem.Attrs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ParameterList">
+            <xs:complexContent>
+                  <xs:extension base="Parameter">
+                        <xs:sequence>
+                              <xs:group ref="ParameterList.Assocs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Patient">
+            <xs:complexContent>
+                  <xs:extension base="Role">
+                        <xs:sequence>
+                              <xs:group ref="Patient.Attrs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="PatientEncounter">
+            <xs:complexContent>
+                  <xs:extension base="Act">
+                        <xs:sequence>
+                              <xs:group ref="PatientEncounter.Attrs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Person">
+            <xs:complexContent>
+                  <xs:extension base="LivingSubject">
+                        <xs:sequence>
+                              <xs:group ref="Person.Attrs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Place">
+            <xs:complexContent>
+                  <xs:extension base="Entity">
+                        <xs:sequence>
+                              <xs:group ref="Place.Attrs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Procedure">
+            <xs:complexContent>
+                  <xs:extension base="Act">
+                        <xs:sequence>
+                              <xs:group ref="Procedure.Attrs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="PublicHealthCase">
+            <xs:complexContent>
+                  <xs:extension base="Observation">
+                        <xs:sequence>
+                              <xs:group ref="PublicHealthCase.Attrs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="QueryAck">
+            <xs:complexContent>
+                  <xs:extension base="QueryEvent">
+                        <xs:sequence>
+                              <xs:group ref="QueryAck.Attrs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="QueryByParameter">
+            <xs:complexContent>
+                  <xs:extension base="QuerySpec">
+                        <xs:sequence>
+                              <xs:group ref="QueryByParameter.Assocs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="QueryBySelection">
+            <xs:complexContent>
+                  <xs:extension base="QuerySpec">
+                        <xs:sequence>
+                              <xs:group ref="QueryBySelection.Assocs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="QueryContinuation">
+            <xs:complexContent>
+                  <xs:extension base="QueryEvent">
+                        <xs:sequence>
+                              <xs:group ref="QueryContinuation.Attrs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="QueryEvent">
+            <xs:complexContent>
+                  <xs:extension base="InfrastructureRoot">
+                        <xs:sequence>
+                              <xs:group ref="QueryEvent.Attrs"/>
+                              <xs:group ref="QueryEvent.Assocs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="QuerySpec">
+            <xs:complexContent>
+                  <xs:extension base="QueryEvent">
+                        <xs:sequence>
+                              <xs:group ref="QuerySpec.Attrs"/>
+                              <xs:group ref="QuerySpec.Assocs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="RelationalExpression">
+            <xs:complexContent>
+                  <xs:extension base="SelectionExpression">
+                        <xs:sequence>
+                              <xs:group ref="RelationalExpression.Attrs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="RoleHeir">
+            <xs:complexContent>
+                  <xs:extension base="Role"/>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="SelectionExpression">
+            <xs:complexContent>
+                  <xs:extension base="InfrastructureRoot">
+                        <xs:sequence>
+                              <xs:group ref="SelectionExpression.Assocs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="SortControl">
+            <xs:complexContent>
+                  <xs:extension base="InfrastructureRoot">
+                        <xs:sequence>
+                              <xs:group ref="SortControl.Attrs"/>
+                              <xs:group ref="SortControl.Assocs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="SubstanceAdministration">
+            <xs:complexContent>
+                  <xs:extension base="Act">
+                        <xs:sequence>
+                              <xs:group ref="SubstanceAdministration.Attrs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Supply">
+            <xs:complexContent>
+                  <xs:extension base="Act">
+                        <xs:sequence>
+                              <xs:group ref="Supply.Attrs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Table">
+            <xs:complexContent>
+                  <xs:extension base="ContextStructure">
+                        <xs:sequence>
+                              <xs:group ref="Table.Attrs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="TableCell">
+            <xs:complexContent>
+                  <xs:extension base="TableStructure">
+                        <xs:sequence>
+                              <xs:group ref="TableCell.Attrs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="TableColumnStructure">
+            <xs:complexContent>
+                  <xs:extension base="TableStructure">
+                        <xs:sequence>
+                              <xs:group ref="TableColumnStructure.Attrs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="TableStructure">
+            <xs:complexContent>
+                  <xs:extension base="ContextStructure">
+                        <xs:sequence>
+                              <xs:group ref="TableStructure.Attrs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Transmission">
+            <xs:complexContent>
+                  <xs:extension base="InfrastructureRoot">
+                        <xs:sequence>
+                              <xs:group ref="Transmission.Attrs"/>
+                              <xs:group ref="Transmission.Assocs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="WorkingList">
+            <xs:complexContent>
+                  <xs:extension base="Act">
+                        <xs:sequence>
+                              <xs:group ref="WorkingList.Attrs"/>
+                        </xs:sequence>
+                  </xs:extension>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:group name="Act.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="id" type="II"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="code" type="Act.code"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="negationInd" type="BL"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="derivationExpr" type="ST"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="text" type="ED"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="title" type="ST"/>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="statusCode" type="Act.statusCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="effectiveTime" type="SXCM_TS"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="activityTime" type="SXCM_TS"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="availabilityTime" type="TS"/>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="priorityCode" type="Act.priorityCode"/>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="confidentialityCode" type="Act.confidentialityCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="repeatNumber" type="IVL_INT"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="interruptibleInd" type="BL"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="levelCode" type="Act.levelCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="independentInd" type="BL"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="uncertaintyCode" type="Act.uncertaintyCode"/>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="reasonCode" type="Act.reasonCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="languageCode" type="Act.languageCode"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="Act.Assocs">
+            <xs:sequence>
+                  <xs:group maxOccurs="unbounded" minOccurs="0" ref="Act.outboundRelationship"/>
+                  <xs:group maxOccurs="unbounded" minOccurs="0" ref="Act.inboundRelationship"/>
+                  <xs:group maxOccurs="unbounded" minOccurs="0" ref="Act.participation"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="ActRelationship.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="inversionInd" type="BL"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="contextControlCode" type="ActRelationship.contextControlCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="contextConductionInd" type="BL"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="sequenceNumber" type="INT"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="priorityNumber" type="INT"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="pauseQuantity" type="PQ"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="checkpointCode" type="ActRelationship.checkpointCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="splitCode" type="ActRelationship.splitCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="joinCode" type="ActRelationship.joinCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="negationInd" type="BL"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="conjunctionCode" type="ActRelationship.conjunctionCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="localVariableName" type="ST"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="seperatableInd" type="BL"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="ActRelationship.Assocs">
+            <xs:sequence>
+                  <xs:group maxOccurs="1" minOccurs="1" ref="ActRelationship.source"/>
+                  <xs:group maxOccurs="1" minOccurs="1" ref="ActRelationship.target"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="Participation.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="functionCode" type="Participation.functionCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="contextControlCode" type="Participation.contextControlCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="sequenceNumber" type="INT"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="negationInd" type="BL"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="noteText" type="ED"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="time" type="IVL_TS"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="modeCode" type="Participation.modeCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="awarenessCode" type="Participation.awarenessCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="signatureCode" type="Participation.signatureCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="signatureText" type="ED"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="performInd" type="BL"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="substitutionConditionCode" type="Participation.substitutionConditionCode"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="Participation.Assocs">
+            <xs:sequence>
+                  <xs:group maxOccurs="1" minOccurs="1" ref="Participation.act"/>
+                  <xs:group maxOccurs="1" minOccurs="1" ref="Participation.role"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="Account.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="name" type="ST"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="balanceAmt" type="MO"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="currencyCode" type="Account.currencyCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="interestRateQuantity" type="RTO_MO_PQ"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="allowedBalanceQuantity" type="IVL_MO"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="ControlAct.Assocs">
+            <xs:sequence>
+                  <xs:group maxOccurs="unbounded" minOccurs="0" ref="ControlAct.payload"/>
+                  <xs:group maxOccurs="1" minOccurs="0" ref="ControlAct.queryEvent"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="DeviceTask.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="parameterValue" type="xs:anyType"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="DiagnosticImage.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="subjectOrientationCode" type="DiagnosticImage.subjectOrientationCode"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="Diet.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="energyQuantity" type="PQ"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="carbohydrateQuantity" type="PQ"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="FinancialContract.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="paymentTermsCode" type="FinancialContract.paymentTermsCode"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="FinancialTransaction.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="amt" type="MO"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="creditExchangeRateQuantity" type="REAL"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="debitExchangeRateQuantity" type="REAL"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="InvoiceElement.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="modifierCode" type="InvoiceElement.modifierCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="unitQuantity" type="RTO_PQ_PQ"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="unitPriceAmt" type="RTO_MO_PQ"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="netAmt" type="MO"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="factorNumber" type="REAL"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="pointsNumber" type="REAL"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="ManagedParticipation.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="id" type="II"/>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="statusCode" type="ManagedParticipation.statusCode"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="Observation.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="value" type="xs:anyType"/>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="interpretationCode" type="Observation.interpretationCode"/>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="methodCode" type="Observation.methodCode"/>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="targetSiteCode" type="Observation.targetSiteCode"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="PatientEncounter.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="admissionReferralSourceCode" type="PatientEncounter.admissionReferralSourceCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="lengthOfStayQuantity" type="PQ"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="dischargeDispositionCode" type="PatientEncounter.dischargeDispositionCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="acuityLevelCode" type="PatientEncounter.acuityLevelCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="preAdmitTestInd" type="BL"/>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="specialCourtesiesCode" type="PatientEncounter.specialCourtesiesCode"/>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="specialAccommodationCode" type="PatientEncounter.specialAccommodationCode"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="Procedure.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="methodCode" type="Procedure.methodCode"/>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="approachSiteCode" type="Procedure.approachSiteCode"/>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="targetSiteCode" type="Procedure.targetSiteCode"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="PublicHealthCase.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="detectionMethodCode" type="PublicHealthCase.detectionMethodCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="transmissionModeCode" type="PublicHealthCase.transmissionModeCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="diseaseImportedCode" type="PublicHealthCase.diseaseImportedCode"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="SubstanceAdministration.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="routeCode" type="SubstanceAdministration.routeCode"/>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="approachSiteCode" type="SubstanceAdministration.approachSiteCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="doseQuantity" type="IVL_PQ"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="rateQuantity" type="IVL_PQ"/>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="doseCheckQuantity" type="RTO"/>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="maxDoseQuantity" type="RTO"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="Supply.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="quantity" type="PQ"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="expectedUseTime" type="IVL_TS"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="WorkingList.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="ownershipLevelCode" type="WorkingList.ownershipLevelCode"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="Entity.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="id" type="II"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="code" type="Entity.code"/>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="quantity" type="PQ"/>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="name" type="EN"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="desc" type="ED"/>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="statusCode" type="Entity.statusCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="existenceTime" type="IVL_TS"/>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="telecom" type="TEL"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="riskCode" type="Entity.riskCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="handlingCode" type="Entity.handlingCode"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="Entity.Assocs">
+            <xs:sequence>
+                  <xs:group maxOccurs="unbounded" minOccurs="0" ref="Entity.languageCommunication"/>
+                  <xs:group maxOccurs="unbounded" minOccurs="0" ref="Entity.playedRole"/>
+                  <xs:group maxOccurs="unbounded" minOccurs="0" ref="Entity.scopedRole"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="LanguageCommunication.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="languageCode" type="LanguageCommunication.languageCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="modeCode" type="LanguageCommunication.modeCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="proficiencyLevelCode" type="LanguageCommunication.proficiencyLevelCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="preferenceInd" type="BL"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="LanguageCommunication.Assocs">
+            <xs:sequence>
+                  <xs:group maxOccurs="1" minOccurs="1" ref="LanguageCommunication.entity"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="Container.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="capacityQuantity" type="PQ"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="heightQuantity" type="PQ"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="diameterQuantity" type="PQ"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="capTypeCode" type="Container.capTypeCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="separatorTypeCode" type="Container.separatorTypeCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="barrierDeltaQuantity" type="PQ"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="bottomDeltaQuantity" type="PQ"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="Device.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="manufacturerModelName" type="SC"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="softwareName" type="SC"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="localRemoteControlStateCode" type="Device.localRemoteControlStateCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="alertLevelCode" type="Device.alertLevelCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="lastCalibrationTime" type="TS"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="LivingSubject.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="administrativeGenderCode" type="LivingSubject.administrativeGenderCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="birthTime" type="TS"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="deceasedInd" type="BL"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="deceasedTime" type="TS"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="multipleBirthInd" type="BL"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="multipleBirthOrderNumber" type="INT"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="organDonorInd" type="BL"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="ManufacturedMaterial.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="lotNumberText" type="ST"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="expirationTime" type="IVL_TS"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="stabilityTime" type="IVL_TS"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="Material.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="formCode" type="Material.formCode"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="NonPersonLivingSubject.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="strainText" type="ED"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="genderStatusCode" type="NonPersonLivingSubject.genderStatusCode"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="Organization.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="addr" type="AD"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="standardIndustryClassCode" type="Organization.standardIndustryClassCode"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="Person.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="addr" type="AD"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="maritalStatusCode" type="Person.maritalStatusCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="educationLevelCode" type="Person.educationLevelCode"/>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="disabilityCode" type="Person.disabilityCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="livingArrangementCode" type="Person.livingArrangementCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="religiousAffiliationCode" type="Person.religiousAffiliationCode"/>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="raceCode" type="Person.raceCode"/>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="ethnicGroupCode" type="Person.ethnicGroupCode"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="Place.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="mobileInd" type="BL"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="addr" type="AD"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="directionsText" type="ED"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="positionText" type="ED"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="gpsText" type="ST"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="Role.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="id" type="II"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="code" type="Role.code"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="negationInd" type="BL"/>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="addr" type="AD"/>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="telecom" type="TEL"/>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="statusCode" type="Role.statusCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="effectiveTime" type="IVL_TS"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="certificateText" type="ED"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="quantity" type="RTO"/>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="positionNumber" type="INT"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="Role.Assocs">
+            <xs:sequence>
+                  <xs:group maxOccurs="1" minOccurs="0" ref="Role.player"/>
+                  <xs:group maxOccurs="1" minOccurs="0" ref="Role.scoper"/>
+                  <xs:group maxOccurs="unbounded" minOccurs="0" ref="Role.outboundLink"/>
+                  <xs:group maxOccurs="unbounded" minOccurs="0" ref="Role.inboundLink"/>
+                  <xs:group maxOccurs="unbounded" minOccurs="0" ref="Role.participation"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="RoleLink.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="effectiveTime" type="IVL_TS"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="RoleLink.Assocs">
+            <xs:sequence>
+                  <xs:group maxOccurs="1" minOccurs="1" ref="RoleLink.source"/>
+                  <xs:group maxOccurs="1" minOccurs="1" ref="RoleLink.target"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="Access.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="approachSiteCode" type="Access.approachSiteCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="targetSiteCode" type="Access.targetSiteCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="gaugeQuantity" type="PQ"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="Employee.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="jobCode" type="Employee.jobCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="jobTitleName" type="SC"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="jobClassCode" type="Employee.jobClassCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="salaryTypeCode" type="Employee.salaryTypeCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="salaryQuantity" type="MO"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="hazardExposureText" type="ED"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="protectiveEquipmentText" type="ED"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="LicensedEntity.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="recertificationTime" type="TS"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="Patient.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="confidentialityCode" type="Patient.confidentialityCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="veryImportantPersonCode" type="Patient.veryImportantPersonCode"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="InfrastructureRoot.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="templateId" type="OID"/>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="realmCode" type="InfrastructureRoot.realmCode"/>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="typeID" type="OID"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="nullFlavor" type="InfrastructureRoot.nullFlavor"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="Acknowledgement.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="typeCode" type="Acknowledgement.typeCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="expectedSequenceNumber" type="INT"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="messageWaitingNumber" type="INT"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="messageWaitingPriorityCode" type="Acknowledgement.messageWaitingPriorityCode"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="Acknowledgement.Assocs">
+            <xs:sequence>
+                  <xs:group maxOccurs="unbounded" minOccurs="0" ref="Acknowledgement.acknowledgementDetail"/>
+                  <xs:group maxOccurs="1" minOccurs="1" ref="Acknowledgement.acknowledges"/>
+                  <xs:group maxOccurs="1" minOccurs="1" ref="Acknowledgement.conveyingMessage"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="AcknowledgementDetail.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="typeCode" type="AcknowledgementDetail.typeCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="code" type="AcknowledgementDetail.code"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="text" type="ED"/>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="location" type="ST"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="AcknowledgementDetail.Assocs">
+            <xs:sequence>
+                  <xs:group maxOccurs="1" minOccurs="1" ref="AcknowledgementDetail.acknowledgement"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="AttentionLine.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="keyWordText" type="SC"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="value" type="ST"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="AttentionLine.Assocs">
+            <xs:sequence>
+                  <xs:group maxOccurs="1" minOccurs="1" ref="AttentionLine.transmission"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="Batch.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="referenceControlId" type="II"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="name" type="SC"/>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="batchComment" type="ST"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="transmissionQuantity" type="INT"/>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="batchTotalNumber" type="INT"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="Batch.Assocs">
+            <xs:sequence>
+                  <xs:group maxOccurs="unbounded" minOccurs="0" ref="Batch.transmission"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="CommunicationFunction.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="typeCode" type="CommunicationFunction.typeCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="telecom" type="TEL"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="CommunicationFunction.Assocs">
+            <xs:sequence>
+                  <xs:group maxOccurs="unbounded" minOccurs="1" ref="CommunicationFunction.transmission"/>
+                  <xs:group maxOccurs="unbounded" minOccurs="1" ref="CommunicationFunction.entity"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="Message.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="versionCode" type="Message.versionCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="interactionId" type="II"/>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="profileId" type="II"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="processingCode" type="Message.processingCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="processingModeCode" type="Message.processingModeCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="acceptAckCode" type="Message.acceptAckCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="responseCode" type="Message.responseCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="sequenceNumber" type="INT"/>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="attachmentText" type="ED"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="Message.Assocs">
+            <xs:sequence>
+                  <xs:group maxOccurs="unbounded" minOccurs="0" ref="Message.acknowledgedBy"/>
+                  <xs:group maxOccurs="1" minOccurs="0" ref="Message.conveyedAcknowledgement"/>
+                  <xs:group maxOccurs="1" minOccurs="0" ref="Message.controlAct"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="Transmission.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="id" type="II"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="creationTime" type="TS"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="securityText" type="ST"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="Transmission.Assocs">
+            <xs:sequence>
+                  <xs:group maxOccurs="unbounded" minOccurs="0" ref="Transmission.communicationFunction"/>
+                  <xs:group maxOccurs="unbounded" minOccurs="0" ref="Transmission.attentionLine"/>
+                  <xs:group maxOccurs="1" minOccurs="0" ref="Transmission.batch"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="LogicalExpression.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="relationalConjunctionCode" type="LogicalExpression.relationalConjunctionCode"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="LogicalExpression.Assocs">
+            <xs:sequence>
+                  <xs:group maxOccurs="unbounded" minOccurs="0" ref="LogicalExpression.userAsLeft"/>
+                  <xs:group maxOccurs="unbounded" minOccurs="0" ref="LogicalExpression.userAsRight"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="Parameter.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="id" type="II"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="Parameter.Assocs">
+            <xs:sequence>
+                  <xs:group maxOccurs="1" minOccurs="0" ref="Parameter.queryByParameter"/>
+                  <xs:group maxOccurs="1" minOccurs="0" ref="Parameter.parameterList"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="ParameterItem.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="value" type="xs:anyType"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="semanticsText" type="ST"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="ParameterList.Assocs">
+            <xs:sequence>
+                  <xs:group maxOccurs="unbounded" minOccurs="0" ref="ParameterList.parameter"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="QueryAck.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="queryResponseCode" type="QueryAck.queryResponseCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="resultTotalQuantity" type="INT"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="resultCurrentQuantity" type="INT"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="resultRemainingQuantity" type="INT"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="QueryByParameter.Assocs">
+            <xs:sequence>
+                  <xs:group maxOccurs="unbounded" minOccurs="0" ref="QueryByParameter.parameter"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="QueryBySelection.Assocs">
+            <xs:sequence>
+                  <xs:group maxOccurs="unbounded" minOccurs="0" ref="QueryBySelection.selectionExpression"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="QueryContinuation.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="startResultNumber" type="INT"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="continuationQuantity" type="INT"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="QueryEvent.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="queryId" type="II"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="statusCode" type="QueryEvent.statusCode"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="QueryEvent.Assocs">
+            <xs:sequence>
+                  <xs:group maxOccurs="1" minOccurs="1" ref="QueryEvent.controlAct"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="QuerySpec.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="modifyCode" type="QuerySpec.modifyCode"/>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="responseElementGroupId" type="II"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="responseModalityCode" type="QuerySpec.responseModalityCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="responsePriorityCode" type="QuerySpec.responsePriorityCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="initialQuantity" type="INT"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="initialQuantityCode" type="QuerySpec.initialQuantityCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="executionAndDeliveryTime" type="TS"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="QuerySpec.Assocs">
+            <xs:sequence>
+                  <xs:group maxOccurs="unbounded" minOccurs="0" ref="QuerySpec.sortControl"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="RelationalExpression.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="elementName" type="SC"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="relationalOperatorCode" type="RelationalExpression.relationalOperatorCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="value" type="ST"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="SelectionExpression.Assocs">
+            <xs:sequence>
+                  <xs:group maxOccurs="1" minOccurs="0" ref="SelectionExpression.leftSide"/>
+                  <xs:group maxOccurs="1" minOccurs="1" ref="SelectionExpression.queryBySelection"/>
+                  <xs:group maxOccurs="1" minOccurs="0" ref="SelectionExpression.rightSide"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="SortControl.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="sequenceNumber" type="INT"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="elementName" type="SC"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="directionCode" type="SortControl.directionCode"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="SortControl.Assocs">
+            <xs:sequence>
+                  <xs:group maxOccurs="1" minOccurs="1" ref="SortControl.querySpec"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="Document.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="setId" type="II"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="versionNumber" type="INT"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="completionCode" type="Document.completionCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="storageCode" type="Document.storageCode"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="copyTime" type="TS"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="LinkHtml.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="href" type="ED"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="name" type="ST"/>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="rel" type="LinkHtml.rel"/>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="rev" type="LinkHtml.rev"/>
+<!--      title clashes with the Act attribute with the same name in the definition
+          of LinkHtml
+                  <xs:element maxOccurs="1" minOccurs="0" name="title" type="ST"/>
+-->
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="LocalAttr.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="name" type="ST"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="value" type="ST"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="LocalMarkup.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="descriptor" type="ST"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="render" type="ST"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="ignoreCode" type="LocalMarkup.ignoreCode"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="Table.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="summary" type="ST"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="width" type="ST"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="rules" type="Table.rules"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="cellspacing" type="ST"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="cellpadding" type="ST"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="border" type="INT"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="frame" type="Table.frame"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="TableCell.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="scope" type="TableCell.scope"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="abbr" type="ST"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="axis" type="ST"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="colspan" type="INT"/>
+                  <xs:element maxOccurs="unbounded" minOccurs="0" name="headers" type="ED"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="rowspan" type="INT"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="TableColumnStructure.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="span" type="INT"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="width" type="ST"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="TableStructure.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="char" type="ST"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="charoff" type="ST"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="halign" type="TableStructure.halign"/>
+                  <xs:element maxOccurs="1" minOccurs="0" name="valign" type="TableStructure.valign"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:group name="ContextStructure.Attrs">
+            <xs:sequence>
+                  <xs:element maxOccurs="1" minOccurs="0" name="localId" type="ST"/>
+            </xs:sequence>
+      </xs:group>
+      <xs:complexType name="Act.classCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CNE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CS">
+                        <xs:attribute name="code" type="ActClass"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Act.moodCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CNE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CS">
+                        <xs:attribute name="code" type="ActMood"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Act.code">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CD">
+                        <xs:sequence>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="qualifier" type="CR"/>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="ActCode" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Act.statusCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CNE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CS">
+                        <xs:attribute name="code" type="ActStatus"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Act.priorityCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="ActPriority" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Act.confidentialityCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="Confidentiality" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Act.levelCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="ActContextLevel" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Act.uncertaintyCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CNE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="ActUncertainty"/>
+                        <xs:attribute fixed="ActUncertainty" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Act.reasonCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="ActReason" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Act.languageCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="HumanLanguage" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ActRelationship.typeCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CNE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CS">
+                        <xs:attribute name="code" type="ActRelationshipType"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ActRelationship.contextControlCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CNE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CS">
+                        <xs:attribute name="code" type="ContextControl"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ActRelationship.checkpointCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CNE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CS">
+                        <xs:attribute name="code" type="ActRelationshipCheckpoint"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ActRelationship.splitCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CNE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CS">
+                        <xs:attribute name="code" type="ActRelationshipSplit"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ActRelationship.joinCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CNE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CS">
+                        <xs:attribute name="code" type="ActRelationshipJoin"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ActRelationship.conjunctionCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CNE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CS">
+                        <xs:attribute name="code" type="RelationshipConjunction"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Participation.typeCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CNE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CS">
+                        <xs:attribute name="code" type="ParticipationType"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Participation.functionCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CD">
+                        <xs:sequence>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="qualifier" type="CR"/>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="ParticipationFunction" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Participation.contextControlCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CNE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CS">
+                        <xs:attribute name="code" type="ContextControl"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Participation.modeCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="ParticipationMode" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Participation.awarenessCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="TargetAwareness" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Participation.signatureCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CNE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="ParticipationSignature"/>
+                        <xs:attribute fixed="ParticipationSignature" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Participation.substitutionConditionCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="SubstitutionCondition" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Account.currencyCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="Currency" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="DiagnosticImage.subjectOrientationCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="ImagingSubjectOrientation" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="FinancialContract.paymentTermsCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="PaymentTerms" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="InvoiceElement.modifierCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="InvoiceElementModifier" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="ManagedParticipation.statusCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CNE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CS">
+                        <xs:attribute name="code" type="ManagedParticipationStatus"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Observation.interpretationCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="ObservationInterpretation" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Observation.methodCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="ObservationMethod" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Observation.targetSiteCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CD">
+                        <xs:sequence>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="qualifier" type="CR"/>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="ActSite" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="PatientEncounter.admissionReferralSourceCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="EncounterReferralSource" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="PatientEncounter.dischargeDispositionCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="EncounterDischargeDisposition" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="PatientEncounter.acuityLevelCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="EncounterAcuity" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="PatientEncounter.specialCourtesiesCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="EncounterSpecialCourtesy" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="PatientEncounter.specialAccommodationCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="SpecialAccommodation" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Procedure.methodCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="ProcedureMethod" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Procedure.approachSiteCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CD">
+                        <xs:sequence>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="qualifier" type="CR"/>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="ActSite" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Procedure.targetSiteCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CD">
+                        <xs:sequence>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="qualifier" type="CR"/>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="ActSite" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="PublicHealthCase.detectionMethodCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="CaseDetectionMethod" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="PublicHealthCase.transmissionModeCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="CaseTransmissionMode" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="PublicHealthCase.diseaseImportedCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="CaseDiseaseImported" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="SubstanceAdministration.routeCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="RouteOfAdministration" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="SubstanceAdministration.approachSiteCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CD">
+                        <xs:sequence>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="qualifier" type="CR"/>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="ActSite" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="WorkingList.ownershipLevelCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="ListOwnershipLevel" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Entity.classCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CNE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CS">
+                        <xs:attribute name="code" type="EntityClass"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Entity.determinerCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CNE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CS">
+                        <xs:attribute name="code" type="EntityDeterminer"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Entity.code">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="EntityCode" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Entity.statusCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CNE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CS">
+                        <xs:attribute name="code" type="EntityStatus"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Entity.riskCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="EntityRisk" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Entity.handlingCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="EntityHandling" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="LanguageCommunication.languageCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="HumanLanguage" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="LanguageCommunication.modeCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="LanguageAbilityMode" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="LanguageCommunication.proficiencyLevelCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="LanguageAbilityProficiency" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Container.capTypeCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="ContainerCap" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Container.separatorTypeCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="ContainerSeparator" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Device.localRemoteControlStateCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="LocalRemoteControlState" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Device.alertLevelCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="DeviceAlertLevel" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="LivingSubject.administrativeGenderCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="AdministrativeGender" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Material.formCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="MaterialForm" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="NonPersonLivingSubject.genderStatusCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="GenderStatus" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Organization.standardIndustryClassCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="OrganizationIndustryClass" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Person.maritalStatusCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="MaritalStatus" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Person.educationLevelCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="EducationLevel" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Person.disabilityCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="PersonDisabilityType" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Person.livingArrangementCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="LivingArrangement" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Person.religiousAffiliationCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="ReligiousAffiliation" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Person.raceCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="Race" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Person.ethnicGroupCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="Ethnicity" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Role.classCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CNE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CS">
+                        <xs:attribute name="code" type="RoleClass"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Role.code">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="RoleCode" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Role.statusCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CNE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CS">
+                        <xs:attribute name="code" type="RoleStatus"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="RoleLink.typeCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CNE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CS">
+                        <xs:attribute name="code" type="RoleLinkType"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Access.approachSiteCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CD">
+                        <xs:sequence>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="qualifier" type="CR"/>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="ActSite" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Access.targetSiteCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CD">
+                        <xs:sequence>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="qualifier" type="CR"/>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="ActSite" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Employee.jobCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="EmployeeJob" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Employee.jobClassCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="EmployeeJobClass" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Employee.salaryTypeCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="EmployeeSalaryType" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Patient.confidentialityCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="Confidentiality" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Patient.veryImportantPersonCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="PatientImportance" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="InfrastructureRoot.realmCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CNE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CS">
+                        <xs:attribute name="code" type="Realm"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="InfrastructureRoot.nullFlavor">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CNE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CS">
+                        <xs:attribute name="code" type="NullFlavor"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Acknowledgement.typeCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CNE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CS">
+                        <xs:attribute name="code" type="AcknowledgementType"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Acknowledgement.messageWaitingPriorityCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="MessageWaitingPriority" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="AcknowledgementDetail.typeCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CNE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CS">
+                        <xs:attribute name="code" type="AcknowledgementDetailType"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="AcknowledgementDetail.code">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="AcknowledgementDetailCode" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="CommunicationFunction.typeCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CNE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CS">
+                        <xs:attribute name="code" type="CommunicationFunctionType"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Message.versionCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CNE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CS">
+                        <xs:attribute name="code" type="HL7StandardVersionCode"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Message.processingCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CNE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CS">
+                        <xs:attribute name="code" type="ProcessingID"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Message.processingModeCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CNE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CS">
+                        <xs:attribute name="code" type="ProcessingMode"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Message.acceptAckCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CNE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CS">
+                        <xs:attribute name="code" type="AcknowledgementCondition"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Message.responseCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CNE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CS">
+                        <xs:attribute name="code" type="ResponseLevel"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="LogicalExpression.relationalConjunctionCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CNE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CS">
+                        <xs:attribute name="code" type="SQLConjunction"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="QueryAck.queryResponseCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CNE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CS">
+                        <xs:attribute name="code" type="QueryResponse"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="QueryEvent.statusCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CNE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CS">
+                        <xs:attribute name="code" type="QueryStatusCode"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="QuerySpec.modifyCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CNE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CS">
+                        <xs:attribute name="code" type="ModifyIndicator"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="QuerySpec.responseModalityCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CNE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CS">
+                        <xs:attribute name="code" type="ResponseModality"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="QuerySpec.responsePriorityCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CNE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CS">
+                        <xs:attribute name="code" type="QueryPriority"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="QuerySpec.initialQuantityCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="QueryRequestLimit" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="RelationalExpression.relationalOperatorCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CNE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CS">
+                        <xs:attribute name="code" type="RelationalOperator"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="SortControl.directionCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CNE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CS">
+                        <xs:attribute name="code" type="Sequencing"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Document.completionCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="DocumentCompletion" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Document.storageCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="DocumentStorage" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="LinkHtml.rel">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="HtmlLinkType" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="LinkHtml.rev">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CWE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CE">
+                        <xs:sequence>
+                              <xs:element maxOccurs="1" minOccurs="0" name="originalText" type="ED"/>
+                              <xs:element maxOccurs="unbounded" minOccurs="0" name="translation" type="CD"/>
+                        </xs:sequence>
+                        <xs:attribute name="code" type="cs"/>
+                        <xs:attribute fixed="HtmlLinkType" name="codeSystemName" type="st"/>
+                        <xs:attribute fixed="44" name="codeSystemVersion" type="st"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="LocalMarkup.ignoreCode">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CNE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CS">
+                        <xs:attribute name="code" type="LocalMarkupIgnore"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Table.rules">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CNE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CS">
+                        <xs:attribute name="code" type="TableRules"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="Table.frame">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CNE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CS">
+                        <xs:attribute name="code" type="TableFrame"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="TableCell.scope">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CNE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CS">
+                        <xs:attribute name="code" type="TableCellScope"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="TableStructure.halign">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CNE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CS">
+                        <xs:attribute name="code" type="TableCellHorizontalAlign"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+      <xs:complexType name="TableStructure.valign">
+            <xs:annotation>
+                  <xs:appinfo>
+                        <voc:coded strength="CNE" xmlns:voc="urn:hl7-org:v3/voc"/>
+                  </xs:appinfo>
+            </xs:annotation>
+            <xs:complexContent>
+                  <xs:restriction base="CS">
+                        <xs:attribute name="code" type="TableCellVerticalAlign"/>
+                  </xs:restriction>
+            </xs:complexContent>
+      </xs:complexType>
+</xs:schema>

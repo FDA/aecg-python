@@ -1,0 +1,3903 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="urn:hl7-org:v3" xmlns:voc="urn:hl7-org:v3:meta:voc" xmlns="urn:hl7-org:v3" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:include schemaLocation="../dt/datatypes.xsd"/>
+	<xs:import namespace="urn:hl7-org:v3:meta:voc" schemaLocation="../meta/voc.xsd"/>
+	<!--
+the following types are just placeholders...they serve as the
+domain of some rim attribute, but they are not defined in
+the vocabulary
+-->
+	<xs:simpleType name="BB_RR_OO_KK_EE_NN">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<!--
+the following types are not defined in the vocabulary, but probably should
+be...they enumerate all of the classes and associations in the RIM...and
+should be in the vocabulary because it is the equivalent of the DataType domain
+-->
+	<xs:simpleType name="Classes">
+		<xs:restriction base="cs">
+			<xs:enumeration value="Access"/>
+			<xs:enumeration value="Account"/>
+			<xs:enumeration value="AcknowledgementDetail"/>
+			<xs:enumeration value="Act"/>
+			<xs:enumeration value="ActHeir"/>
+			<xs:enumeration value="ActRelationship"/>
+			<xs:enumeration value="Container"/>
+			<xs:enumeration value="Device"/>
+			<xs:enumeration value="DeviceTask"/>
+			<xs:enumeration value="DiagnosticImage"/>
+			<xs:enumeration value="Diet"/>
+			<xs:enumeration value="Employee"/>
+			<xs:enumeration value="Entity"/>
+			<xs:enumeration value="EntityHeir"/>
+			<xs:enumeration value="FinancialContract"/>
+			<xs:enumeration value="FinancialTransaction"/>
+			<xs:enumeration value="InvoiceElement"/>
+			<xs:enumeration value="LanguageCommunication"/>
+			<xs:enumeration value="LicensedEntity"/>
+			<xs:enumeration value="LivingSubject"/>
+			<xs:enumeration value="ManagedParticipation"/>
+			<xs:enumeration value="ManufacturedMaterial"/>
+			<xs:enumeration value="Material"/>
+			<xs:enumeration value="NonPersonLivingSubject"/>
+			<xs:enumeration value="Observation"/>
+			<xs:enumeration value="Organization"/>
+			<xs:enumeration value="Participation"/>
+			<xs:enumeration value="Patient"/>
+			<xs:enumeration value="PatientEncounter"/>
+			<xs:enumeration value="Person"/>
+			<xs:enumeration value="Place"/>
+			<xs:enumeration value="Procedure"/>
+			<xs:enumeration value="PublicHealthCase"/>
+			<xs:enumeration value="Role"/>
+			<xs:enumeration value="RoleHeir"/>
+			<xs:enumeration value="RoleLink"/>
+			<xs:enumeration value="SchedulableResource"/>
+			<xs:enumeration value="SubstanceAdministration"/>
+			<xs:enumeration value="Supply"/>
+			<xs:enumeration value="WorkingList"/>
+			<xs:enumeration value="Acknowledgement"/>
+			<xs:enumeration value="AcknowledgementMessage"/>
+			<xs:enumeration value="AttentionLine"/>
+			<xs:enumeration value="Batch"/>
+			<xs:enumeration value="CommunicationFunction"/>
+			<xs:enumeration value="ContextStructure"/>
+			<xs:enumeration value="ControlAct"/>
+			<xs:enumeration value="Document"/>
+			<xs:enumeration value="InfrastructureRoot"/>
+			<xs:enumeration value="LinkHtml"/>
+			<xs:enumeration value="LocalAttr"/>
+			<xs:enumeration value="LocalMarkup"/>
+			<xs:enumeration value="LogicalExpression"/>
+			<xs:enumeration value="Message"/>
+			<xs:enumeration value="Parameter"/>
+			<xs:enumeration value="ParameterItem"/>
+			<xs:enumeration value="ParameterList"/>
+			<xs:enumeration value="QueryAck"/>
+			<xs:enumeration value="QueryByParameter"/>
+			<xs:enumeration value="QueryBySelection"/>
+			<xs:enumeration value="QueryContinuation"/>
+			<xs:enumeration value="QueryEvent"/>
+			<xs:enumeration value="QuerySpec"/>
+			<xs:enumeration value="RelationalExpression"/>
+			<xs:enumeration value="SelectionExpression"/>
+			<xs:enumeration value="SortControl"/>
+			<xs:enumeration value="Table"/>
+			<xs:enumeration value="TableCell"/>
+			<xs:enumeration value="TableColumnStructure"/>
+			<xs:enumeration value="TableStructure"/>
+			<xs:enumeration value="Transmission"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Associations">
+		<xs:restriction base="cs">
+			<xs:enumeration value="outboundRelationship"/>
+			<xs:enumeration value="inboundRelationship"/>
+			<xs:enumeration value="languageCommunication"/>
+			<xs:enumeration value="playedRole"/>
+			<xs:enumeration value="scopedRole"/>
+			<xs:enumeration value="act"/>
+			<xs:enumeration value="role"/>
+			<xs:enumeration value="player"/>
+			<xs:enumeration value="scoper"/>
+			<xs:enumeration value="participation"/>
+			<xs:enumeration value="outboundLink"/>
+			<xs:enumeration value="inboundLink"/>
+			<xs:enumeration value="source"/>
+			<xs:enumeration value="target"/>
+			<xs:enumeration value="acknowledges"/>
+			<xs:enumeration value="conveyingMessage"/>
+			<xs:enumeration value="annotatedBy"/>
+			<xs:enumeration value="acknowledgement"/>
+			<xs:enumeration value="entity"/>
+			<xs:enumeration value="transmission"/>
+			<xs:enumeration value="payload"/>
+			<xs:enumeration value="queryEvent"/>
+			<xs:enumeration value="userAsLeft"/>
+			<xs:enumeration value="userAsRight"/>
+			<xs:enumeration value="acknowledgedBy"/>
+			<xs:enumeration value="conveyedAcknowledgement"/>
+			<xs:enumeration value="queryByParameter"/>
+			<xs:enumeration value="parameterList"/>
+			<xs:enumeration value="parameter"/>
+			<xs:enumeration value="selectionExpression"/>
+			<xs:enumeration value="controlAct"/>
+			<xs:enumeration value="sortControl"/>
+			<xs:enumeration value="leftSide"/>
+			<xs:enumeration value="queryBySelection"/>
+			<xs:enumeration value="rightSide"/>
+			<xs:enumeration value="querySpec"/>
+			<xs:enumeration value="communicationFunction"/>
+			<xs:enumeration value="attentionLine"/>
+			<xs:enumeration value="batch"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--
+the following types are defined in the vocabulary
+-->
+	<xs:simpleType name="AcknowledgementCondition">
+		<xs:restriction base="cs">
+		      <xs:enumeration value="AL"/>
+			<xs:enumeration value="NE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="AcknowledgementDetailType">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="AcknowledgementType">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="ClassCode">
+	      <xs:union memberTypes="ActClass RoleClass EntityClass"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActClass">
+		<xs:restriction base="cs">
+			<xs:enumeration value="ACT"/>
+			<xs:enumeration value="CNTRCT"/>
+			<xs:enumeration value="FCNTRCT"/>
+			<xs:enumeration value="COV"/>
+			<xs:enumeration value="CACT"/>
+			<xs:enumeration value="ACTN"/>
+			<xs:enumeration value="INFO"/>
+			<xs:enumeration value="STC"/>
+			<xs:enumeration value="OBS"/>
+			<xs:enumeration value="OBSSER"/>
+			<xs:enumeration value="OBSCOR"/>
+			<xs:enumeration value="CASE"/>
+			<xs:enumeration value="OUTB"/>
+			<xs:enumeration value="ROIBND"/>
+			<xs:enumeration value="ROIOVL"/>
+			<xs:enumeration value="ALRT"/>
+			<xs:enumeration value="CLNTRL"/>
+			<xs:enumeration value="CNOD"/>
+			<xs:enumeration value="COND"/>
+			<xs:enumeration value="DGIMG"/>
+			<xs:enumeration value="MPROT"/>
+			<xs:enumeration value="SPCOBS"/>
+			<xs:enumeration value="SPLY"/>
+			<xs:enumeration value="DIET"/>
+			<xs:enumeration value="DOC"/>
+			<xs:enumeration value="DOCCLIN"/>
+			<xs:enumeration value="CDALVLONE"/>
+			<xs:enumeration value="DOCLIST"/>
+			<xs:enumeration value="ordered"/>
+			<xs:enumeration value="unordered"/>
+			<xs:enumeration value="TBLDATA"/>
+			<xs:enumeration value="TBLHDR"/>
+			<xs:enumeration value="TBLCOL"/>
+			<xs:enumeration value="TBLCOLGP"/>
+			<xs:enumeration value="tbody"/>
+			<xs:enumeration value="tfoot"/>
+			<xs:enumeration value="thead"/>
+			<xs:enumeration value="TBLROW"/>
+			<xs:enumeration value="DOCBODY"/>
+			<xs:enumeration value="DOCCNTNT"/>
+			<xs:enumeration value="DOCLSTITM"/>
+			<xs:enumeration value="DOCPARA"/>
+			<xs:enumeration value="DOCSECT"/>
+			<xs:enumeration value="DOCTBL"/>
+			<xs:enumeration value="LINKHTML"/>
+			<xs:enumeration value="LOCALATTR"/>
+			<xs:enumeration value="LOCALMRKP"/>
+			<xs:enumeration value="ACCM"/>
+			<xs:enumeration value="ACCT"/>
+			<xs:enumeration value="ACSN"/>
+			<xs:enumeration value="ADJUD"/>
+			<xs:enumeration value="CONS"/>
+			<xs:enumeration value="CONTREG"/>
+			<xs:enumeration value="CTTEVENT"/>
+			<xs:enumeration value="ENC"/>
+			<xs:enumeration value="INC"/>
+			<xs:enumeration value="INFRM"/>
+			<xs:enumeration value="INVE"/>
+			<xs:enumeration value="LIST"/>
+			<xs:enumeration value="PCPR"/>
+			<xs:enumeration value="PROC"/>
+			<xs:enumeration value="REFR"/>
+			<xs:enumeration value="REG"/>
+			<xs:enumeration value="SBADM"/>
+			<xs:enumeration value="SPCTRT"/>
+			<xs:enumeration value="TRNS"/>
+			<xs:enumeration value="XACT"/>
+			<xs:enumeration value="IDREF"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ActClassRoot">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActClassContract">
+		<xs:restriction base="ActClass">
+			<xs:enumeration value="FCNTRCT"/>
+			<xs:enumeration value="COV"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ActClassFinancialContract">
+		<xs:restriction base="ActClassContract">
+			<xs:enumeration value="COV"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ActClassControlAct">
+		<xs:restriction base="ActClass">
+			<xs:enumeration value="ACTN"/>
+			<xs:enumeration value="INFO"/>
+			<xs:enumeration value="STC"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ActClassObservation">
+		<xs:restriction base="ActClass">
+			<xs:enumeration value="OBSSER"/>
+			<xs:enumeration value="OBSCOR"/>
+			<xs:enumeration value="CASE"/>
+			<xs:enumeration value="OUTB"/>
+			<xs:enumeration value="ROIBND"/>
+			<xs:enumeration value="ROIOVL"/>
+			<xs:enumeration value="ALRT"/>
+			<xs:enumeration value="CLNTRL"/>
+			<xs:enumeration value="CNOD"/>
+			<xs:enumeration value="COND"/>
+			<xs:enumeration value="DGIMG"/>
+			<xs:enumeration value="MPROT"/>
+			<xs:enumeration value="SPCOBS"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ActClassObservationSeries">
+		<xs:restriction base="ActClassObservation">
+			<xs:enumeration value="OBSCOR"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ActClassPublicHealthCase">
+		<xs:restriction base="ActClassObservation">
+			<xs:enumeration value="OUTB"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ActClassROI">
+		<xs:restriction base="ActClass">
+			<xs:enumeration value="ROIBND"/>
+			<xs:enumeration value="ROIOVL"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ActClassSupply">
+		<xs:restriction base="ActClass">
+			<xs:enumeration value="DIET"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ActDocumentStructureClass">
+		<xs:restriction base="ActClass">
+			<xs:enumeration value="DOC"/>
+			<xs:enumeration value="DOCCLIN"/>
+			<xs:enumeration value="CDALVLONE"/>
+			<xs:enumeration value="DOCLIST"/>
+			<xs:enumeration value="ordered"/>
+			<xs:enumeration value="unordered"/>
+			<xs:enumeration value="TBLDATA"/>
+			<xs:enumeration value="TBLHDR"/>
+			<xs:enumeration value="TBLCOL"/>
+			<xs:enumeration value="TBLCOLGP"/>
+			<xs:enumeration value="tbody"/>
+			<xs:enumeration value="tfoot"/>
+			<xs:enumeration value="thead"/>
+			<xs:enumeration value="TBLROW"/>
+			<xs:enumeration value="DOCBODY"/>
+			<xs:enumeration value="DOCCNTNT"/>
+			<xs:enumeration value="DOCLSTITM"/>
+			<xs:enumeration value="DOCPARA"/>
+			<xs:enumeration value="DOCSECT"/>
+			<xs:enumeration value="DOCTBL"/>
+			<xs:enumeration value="LINKHTML"/>
+			<xs:enumeration value="LOCALATTR"/>
+			<xs:enumeration value="LOCALMRKP"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ActClassDocument">
+		<xs:restriction base="ActDocumentStructureClass">
+			<xs:enumeration value="DOCCLIN"/>
+			<xs:enumeration value="CDALVLONE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ActClinicalDocument">
+		<xs:restriction base="ActClassDocument">
+			<xs:enumeration value="CDALVLONE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DocumentList">
+		<xs:restriction base="ActDocumentStructureClass">
+			<xs:enumeration value="ordered"/>
+			<xs:enumeration value="unordered"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ListType">
+		<xs:restriction base="DocumentList">
+			<xs:enumeration value="ordered"/>
+			<xs:enumeration value="unordered"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DocumentTableStructure">
+		<xs:restriction base="ActDocumentStructureClass">
+			<xs:enumeration value="TBLDATA"/>
+			<xs:enumeration value="TBLHDR"/>
+			<xs:enumeration value="TBLCOL"/>
+			<xs:enumeration value="TBLCOLGP"/>
+			<xs:enumeration value="tbody"/>
+			<xs:enumeration value="tfoot"/>
+			<xs:enumeration value="thead"/>
+			<xs:enumeration value="TBLROW"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DocumentTableCell">
+		<xs:restriction base="DocumentTableStructure">
+			<xs:enumeration value="TBLDATA"/>
+			<xs:enumeration value="TBLHDR"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DocumentTableColumnStructure">
+		<xs:restriction base="DocumentTableStructure">
+			<xs:enumeration value="TBLCOL"/>
+			<xs:enumeration value="TBLCOLGP"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DocumentTableRowStructure">
+		<xs:restriction base="DocumentTableStructure">
+			<xs:enumeration value="tbody"/>
+			<xs:enumeration value="tfoot"/>
+			<xs:enumeration value="thead"/>
+			<xs:enumeration value="TBLROW"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DocumentTableRowGroup">
+		<xs:restriction base="DocumentTableRowStructure">
+			<xs:enumeration value="tbody"/>
+			<xs:enumeration value="tfoot"/>
+			<xs:enumeration value="thead"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TableRowGroupType">
+		<xs:restriction base="DocumentTableRowGroup">
+			<xs:enumeration value="tbody"/>
+			<xs:enumeration value="tfoot"/>
+			<xs:enumeration value="thead"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ActCode">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="ExternallyDefinedActCodes">
+		<xs:restriction base="ActCode"/>
+		<!-- cs -->
+	</xs:simpleType>
+	<xs:simpleType name="HL7DefinedActCodes">
+		<xs:restriction base="ActCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="HL7StandardVersionCode">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActAccountCode">
+		<xs:restriction base="HL7DefinedActCodes"/>
+	</xs:simpleType>
+	<xs:simpleType name="CreditCard">
+		<xs:restriction base="ActAccountCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActAdjudicationCode">
+		<xs:restriction base="HL7DefinedActCodes"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActAdjudicationGroupCode">
+		<xs:restriction base="HL7DefinedActCodes"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActAdjudicationResultActionCode">
+		<xs:restriction base="HL7DefinedActCodes"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActAlertCode">
+		<xs:restriction base="HL7DefinedActCodes"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActSuppliedItemAlertCode">
+		<xs:restriction base="ActAlertCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="AdministrationAlertCode">
+		<xs:restriction base="ActSuppliedItemAlertCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="AppropriatenessAlertCode">
+		<xs:restriction base="AdministrationAlertCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="InteractionAlertCode">
+		<xs:restriction base="AppropriatenessAlertCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="TherapeuticProductAlert">
+		<xs:restriction base="InteractionAlertCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="ObservationAlertCode">
+		<xs:restriction base="AppropriatenessAlertCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="ConditionAlertCode">
+		<xs:restriction base="ObservationAlertCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="ReactionAlertCode">
+		<xs:restriction base="ObservationAlertCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="RelatedReactionAlertCode">
+		<xs:restriction base="ObservationAlertCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="ComplianceAlertCode">
+		<xs:restriction base="AdministrationAlertCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="DosageProblemAlertCode">
+		<xs:restriction base="AdministrationAlertCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="DoseDurationAlertCode">
+		<xs:restriction base="DosageProblemAlertCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="DrugActionAlert">
+		<xs:restriction base="AdministrationAlertCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="TimingAlert">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="SupplyAlertCode">
+		<xs:restriction base="ActSuppliedItemAlertCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="ClinicalActionAlert">
+		<xs:restriction base="ActAlertCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActAlertManagementCode">
+		<xs:restriction base="HL7DefinedActCodes"/>
+	</xs:simpleType>
+	<xs:simpleType name="OtherActionTakenManagementCode">
+		<xs:restriction base="ActAlertManagementCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="SupplyAppropriateManagementCode">
+		<xs:restriction base="ActAlertManagementCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="TherapyAppropriateManagementCode">
+		<xs:restriction base="ActAlertManagementCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="ConsultedPrescriberManagementCode">
+		<xs:restriction base="TherapyAppropriateManagementCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActBillingArrangementCode">
+		<xs:restriction base="HL7DefinedActCodes"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActBoundedROICode">
+		<xs:restriction base="HL7DefinedActCodes"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActContainerRegistrationCode">
+		<xs:restriction base="HL7DefinedActCodes"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActControlVariable">
+		<xs:restriction base="HL7DefinedActCodes"/>
+	</xs:simpleType>
+	<xs:simpleType name="ECGControlVariable">
+		<xs:restriction base="ActControlVariable"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActCoverageConfirmationCode">
+		<xs:restriction base="HL7DefinedActCodes"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActCoverageAuthorizationConfirmationCode">
+		<xs:restriction base="ActCoverageConfirmationCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActCoverageEligibilityConfirmationCode">
+		<xs:restriction base="ActCoverageConfirmationCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActCoverageLimitCode">
+		<xs:restriction base="HL7DefinedActCodes"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActDietCode">
+		<xs:restriction base="HL7DefinedActCodes"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActEncounterAccommodationCode">
+		<xs:restriction base="HL7DefinedActCodes"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActEncounterCode">
+		<xs:restriction base="HL7DefinedActCodes"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActInpatientEncounterCode">
+		<xs:restriction base="ActEncounterCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActMedicalServiceCode">
+		<xs:restriction base="ActEncounterCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActFinancialTransactionCode">
+		<xs:restriction base="HL7DefinedActCodes"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActIncidentCode">
+		<xs:restriction base="HL7DefinedActCodes"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActInvoiceCode">
+		<xs:restriction base="HL7DefinedActCodes"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActInvoiceElementSummaryCode">
+		<xs:restriction base="HL7DefinedActCodes"/>
+	</xs:simpleType>
+	<xs:simpleType name="InvoiceElementAdjudicated">
+		<xs:restriction base="ActInvoiceElementSummaryCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="InvoiceElementPaid">
+		<xs:restriction base="ActInvoiceElementSummaryCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="InvoiceElementSubmitted">
+		<xs:restriction base="ActInvoiceElementSummaryCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActInvoiceOverrideCode">
+		<xs:restriction base="HL7DefinedActCodes"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActMonitoringProtocolCode">
+		<xs:restriction base="HL7DefinedActCodes"/>
+	</xs:simpleType>
+	<xs:simpleType name="ControlledSubstanceMonitoringProtocol">
+		<xs:restriction base="ActMonitoringProtocolCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="DEADrugSchedule">
+		<xs:restriction base="ControlledSubstanceMonitoringProtocol"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActPaymentCode">
+		<xs:restriction base="HL7DefinedActCodes"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActPharmacySupplyType">
+		<xs:restriction base="HL7DefinedActCodes"/>
+	</xs:simpleType>
+	<xs:simpleType name="EmergencyPharmacySupplyType">
+		<xs:restriction base="ActPharmacySupplyType"/>
+	</xs:simpleType>
+	<xs:simpleType name="FirstFillPharmacySupplyType">
+		<xs:restriction base="ActPharmacySupplyType"/>
+	</xs:simpleType>
+	<xs:simpleType name="RefillPharmacySupplyType">
+		<xs:restriction base="ActPharmacySupplyType"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActProcedureCode">
+		<xs:restriction base="HL7DefinedActCodes"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActProductAcquisitionCode">
+		<xs:restriction base="HL7DefinedActCodes"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActSpecimenTreatmentCode">
+		<xs:restriction base="HL7DefinedActCodes"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActSpecObsCode">
+		<xs:restriction base="HL7DefinedActCodes"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActSpecObsDilutionCode">
+		<xs:restriction base="ActSpecObsCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActSpecObsInterferenceCode">
+		<xs:restriction base="ActSpecObsCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActSpecObsVolumeCode">
+		<xs:restriction base="ActSpecObsCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="ROIOverlayShape">
+		<xs:restriction base="HL7DefinedActCodes"/>
+	</xs:simpleType>
+	<xs:simpleType name="SubstanceAdministrationActCode">
+		<xs:restriction base="HL7DefinedActCodes"/>
+	</xs:simpleType>
+	<xs:simpleType name="x_ActFinancialProductAcquisitionCode">
+		<xs:restriction base="HL7DefinedActCodes"/>
+	</xs:simpleType>
+	<xs:simpleType name="ObservationType">
+		<xs:restriction base="ActCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="AnnotationType">
+		<xs:restriction base="ObservationType"/>
+	</xs:simpleType>
+	<xs:simpleType name="ECGAnnotationType">
+		<xs:restriction base="AnnotationType"/>
+	</xs:simpleType>
+	<xs:simpleType name="FDALabelData">
+		<xs:restriction base="ObservationType"/>
+	</xs:simpleType>
+	<xs:simpleType name="ObservationDiagnosisTypes">
+		<xs:restriction base="ObservationType"/>
+	</xs:simpleType>
+	<xs:simpleType name="ObservationSequenceType">
+		<xs:restriction base="ObservationType"/>
+	</xs:simpleType>
+	<xs:simpleType name="ECGObservationSequenceType">
+		<xs:restriction base="ObservationSequenceType"/>
+	</xs:simpleType>
+	<xs:simpleType name="ObservationSeriesType">
+		<xs:restriction base="ObservationType"/>
+	</xs:simpleType>
+	<xs:simpleType name="ECGObservationSeriesType">
+		<xs:restriction base="ObservationSeriesType"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActInvoiceElementModifier">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActMood">
+		<xs:restriction base="cs">
+			<xs:enumeration value="DEF"/>
+			<xs:enumeration value="EVN.CRT"/>
+			<xs:enumeration value="OPT"/>
+			<xs:enumeration value="GOL"/>
+			<xs:enumeration value="INT"/>
+			<xs:enumeration value="PRP"/>
+			<xs:enumeration value="APT"/>
+			<xs:enumeration value="ARQ"/>
+			<xs:enumeration value="SLOT"/>
+			<xs:enumeration value="PRMS"/>
+			<xs:enumeration value="EVN"/>
+			<xs:enumeration value="RQO"/>
+		</xs:restriction>
+		<!-- Added back 0418 -->
+	</xs:simpleType>
+	<xs:simpleType name="ActMoodCompletionTrack">
+		<xs:restriction base="ActMood">
+			<xs:enumeration value="INT"/>
+			<xs:enumeration value="PRMS"/>
+			<xs:enumeration value="PRP"/>
+			<xs:enumeration value="APT"/>
+			<xs:enumeration value="ARQ"/>
+			<xs:enumeration value="RQO"/>
+			<xs:enumeration value="SLOT"/>
+			<xs:enumeration value="DEF"/>
+			<xs:enumeration value="EVN"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ActMoodPredicate">
+		<xs:restriction base="ActMood">
+			<xs:enumeration value="EVN.CRT"/>
+			<xs:enumeration value="GOL"/>
+			<xs:enumeration value="OPT"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="x_ActMoodDefEvn">
+		<xs:restriction base="ActMood">
+			<xs:enumeration value="EVN"/>
+			<xs:enumeration value="DEF"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="x_ActMoodDocumentObservation">
+		<xs:restriction base="ActMood">
+			<xs:enumeration value="EVN"/>
+			<xs:enumeration value="GOL"/>
+			<xs:enumeration value="INT"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="x_ActMoodEvnOrdPrmsPrp">
+		<xs:restriction base="ActMood">
+			<xs:enumeration value="EVN"/>
+			<xs:enumeration value="RQO"/>
+			<xs:enumeration value="PRMS"/>
+			<xs:enumeration value="PRP"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="x_ActMoodIntentEvent">
+		<xs:restriction base="ActMood">
+			<xs:enumeration value="INT"/>
+			<xs:enumeration value="PRMS"/>
+			<xs:enumeration value="PRP"/>
+			<xs:enumeration value="APT"/>
+			<xs:enumeration value="ARQ"/>
+			<xs:enumeration value="RQO"/>
+			<xs:enumeration value="SLOT"/>
+			<xs:enumeration value="EVN"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ActMoodIntent">
+		<xs:restriction base="ActMoodCompletionTrack">
+			<xs:enumeration value="PRMS"/>
+			<xs:enumeration value="PRP"/>
+			<xs:enumeration value="APT"/>
+			<xs:enumeration value="ARQ"/>
+			<xs:enumeration value="RQO"/>
+			<xs:enumeration value="SLOT"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ActMoodProposal">
+		<xs:restriction base="ActMoodIntent"/>
+	</xs:simpleType>
+	<xs:simpleType name="x_ActMoodOrdPrms">
+		<xs:restriction base="ActMood">
+			<xs:enumeration value="PRMS"/>
+			<xs:enumeration value="RQO"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="x_ActMoodOrdPrmsEvn">
+		<xs:restriction base="ActMood">
+			<xs:enumeration value="PRMS"/>
+			<xs:enumeration value="EVN"/>
+			<xs:enumeration value="RQO"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ActMoodPromise">
+		<xs:restriction base="ActMoodIntent"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActPriority">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActPriorityCallback">
+		<xs:restriction base="ActPriority"/>
+	</xs:simpleType>
+	<xs:simpleType name="EncounterAdmissionUrgency">
+		<xs:restriction base="ActPriority"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActReason">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActAccommodationReason">
+		<xs:restriction base="ActReason"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActPaymentReason">
+		<xs:restriction base="ActReason"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActPaymentAdjustmentReason">
+		<xs:restriction base="ActPaymentReason"/>
+	</xs:simpleType>
+	<xs:simpleType name="SchedulingActReason">
+		<xs:restriction base="ActReason"/>
+	</xs:simpleType>
+	<xs:simpleType name="TransferActReason">
+		<xs:restriction base="ActReason"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActRelationshipCheckpoint">
+		<xs:restriction base="cs"/>
+		<!-- ??? should this be here as structural ??? -->
+	</xs:simpleType>
+	<xs:simpleType name="ActRelationshipJoin">
+		<xs:restriction base="cs"/>
+		<!-- ??? should this be here as structural ??? -->
+	</xs:simpleType>
+	<xs:simpleType name="ActRelationshipSplit">
+		<xs:restriction base="cs"/>
+		<!-- ??? should this be here as structural ??? -->
+	</xs:simpleType>
+	<xs:simpleType name="TypeCode">
+	      <xs:union memberTypes="ActRelationshipType ParticipationType"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActRelationshipType">
+		<xs:restriction base="cs">
+			<xs:enumeration value="CIND"/>
+			<xs:enumeration value="PRCN"/>
+			<xs:enumeration value="RACT"/>
+			<xs:enumeration value="RSON"/>
+			<xs:enumeration value="SUGG"/>
+			<xs:enumeration value="TRIG"/>
+			<xs:enumeration value="COMP"/>
+			<xs:enumeration value="CTRLV"/>
+			<xs:enumeration value="OUTC"/>
+			<xs:enumeration value="GOAL"/>
+			<xs:enumeration value="OBJC"/>
+			<xs:enumeration value="OBJF"/>
+			<xs:enumeration value="RISK"/>
+			<xs:enumeration value="PERT"/>
+			<xs:enumeration value="CHRG"/>
+			<xs:enumeration value="COST"/>
+			<xs:enumeration value="CREDIT"/>
+			<xs:enumeration value="DEBIT"/>
+			<xs:enumeration value="SPRTBND"/>
+			<xs:enumeration value="AUTH"/>
+			<xs:enumeration value="COVBY"/>
+			<xs:enumeration value="DRIV"/>
+			<xs:enumeration value="EXPL"/>
+			<xs:enumeration value="LIMIT"/>
+			<xs:enumeration value="NAME"/>
+			<xs:enumeration value="PREV"/>
+			<xs:enumeration value="REFV"/>
+			<xs:enumeration value="SUMM"/>
+			<xs:enumeration value="SEQL"/>
+			<xs:enumeration value="VRXCRPT"/>
+			<xs:enumeration value="FLFS"/>
+			<xs:enumeration value="OCCR"/>
+			<xs:enumeration value="OREF"/>
+			<xs:enumeration value="SCH"/>
+			<xs:enumeration value="DOC"/>
+			<xs:enumeration value="ELNK"/>
+			<xs:enumeration value="GEN"/>
+			<xs:enumeration value="GEVL"/>
+			<xs:enumeration value="INST"/>
+			<xs:enumeration value="MTCH"/>
+			<xs:enumeration value="OPTN"/>
+			<xs:enumeration value="REV"/>
+			<xs:enumeration value="UPDT"/>
+			<xs:enumeration value="RPLC"/>
+			<xs:enumeration value="SUCC"/>
+			<xs:enumeration value="APND"/>
+			<xs:enumeration value="XFRM"/>
+			<xs:enumeration value="XCRPT"/>
+			<xs:enumeration value="ARR"/>
+			<xs:enumeration value="DEP"/>
+			<xs:enumeration value="CAUS"/>
+			<xs:enumeration value="MFST"/>
+			<xs:enumeration value="REFR"/>
+			<xs:enumeration value="SPRT"/>
+			<xs:enumeration value="SUBJ"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ActRelationshipConditional">
+		<xs:restriction base="ActRelationshipType">
+			<xs:enumeration value="CIND"/>
+			<xs:enumeration value="PRCN"/>
+			<xs:enumeration value="RACT"/>
+			<xs:enumeration value="RSON"/>
+			<xs:enumeration value="SUGG"/>
+			<xs:enumeration value="TRIG"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ActRelationshipHasComponent">
+		<xs:restriction base="ActRelationshipType">
+			<xs:enumeration value="ARR"/>
+			<xs:enumeration value="CTRLV"/>
+			<xs:enumeration value="DEP"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ActRelationshipOutcome">
+		<xs:restriction base="ActRelationshipType">
+			<xs:enumeration value="GOAL"/>
+			<xs:enumeration value="OBJC"/>
+			<xs:enumeration value="OBJF"/>
+			<xs:enumeration value="RISK"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ActRelationshipPertains">
+		<xs:restriction base="ActRelationshipType">
+			<xs:enumeration value="CHRG"/>
+			<xs:enumeration value="COST"/>
+			<xs:enumeration value="CREDIT"/>
+			<xs:enumeration value="DEBIT"/>
+			<xs:enumeration value="SPRT"/>
+			<xs:enumeration value="SPRTBND"/>
+			<xs:enumeration value="AUTH"/>
+			<xs:enumeration value="CAUS"/>
+			<xs:enumeration value="COVBY"/>
+			<xs:enumeration value="DRIV"/>
+			<xs:enumeration value="EXPL"/>
+			<xs:enumeration value="LIMIT"/>
+			<xs:enumeration value="MFST"/>
+			<xs:enumeration value="NAME"/>
+			<xs:enumeration value="PREV"/>
+			<xs:enumeration value="REFR"/>
+			<xs:enumeration value="REFV"/>
+			<xs:enumeration value="SUBJ"/>
+			<xs:enumeration value="SUMM"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ActRelationshipPosts">
+		<xs:restriction base="ActRelationshipPertains">
+			<xs:enumeration value="CHRG"/>
+			<xs:enumeration value="COST"/>
+			<xs:enumeration value="CREDIT"/>
+			<xs:enumeration value="DEBIT"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ActRelationshipSequel">
+		<xs:restriction base="ActRelationshipType">
+			<xs:enumeration value="XCRPT"/>
+			<xs:enumeration value="VRXCRPT"/>
+			<xs:enumeration value="FLFS"/>
+			<xs:enumeration value="OCCR"/>
+			<xs:enumeration value="OREF"/>
+			<xs:enumeration value="SCH"/>
+			<xs:enumeration value="RPLC"/>
+			<xs:enumeration value="SUCC"/>
+			<xs:enumeration value="APND"/>
+			<xs:enumeration value="DOC"/>
+			<xs:enumeration value="ELNK"/>
+			<xs:enumeration value="GEN"/>
+			<xs:enumeration value="GEVL"/>
+			<xs:enumeration value="INST"/>
+			<xs:enumeration value="MTCH"/>
+			<xs:enumeration value="OPTN"/>
+			<xs:enumeration value="REV"/>
+			<xs:enumeration value="UPDT"/>
+			<xs:enumeration value="XFRM"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ActRelationshipExcerpt">
+		<xs:restriction base="ActRelationshipSequel">
+			<xs:enumeration value="VRXCRPT"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ActRelationshipFulfills">
+		<xs:restriction base="ActRelationshipSequel">
+			<xs:enumeration value="OCCR"/>
+			<xs:enumeration value="OREF"/>
+			<xs:enumeration value="SCH"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="x_ActRelationshipDocument">
+		<xs:restriction base="ActRelationshipType">
+			<xs:enumeration value="RPLC"/>
+			<xs:enumeration value="APND"/>
+			<xs:enumeration value="XFRM"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ActRelationshipReplacement">
+		<xs:restriction base="ActRelationshipSequel">
+			<xs:enumeration value="SUCC"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="x_ActRelationshipExternalReference">
+		<xs:restriction base="ActRelationshipType">
+			<xs:enumeration value="ELNK"/>
+			<xs:enumeration value="REFR"/>
+			<xs:enumeration value="SPRT"/>
+			<xs:enumeration value="SUBJ"/>
+			<xs:enumeration value="XCRPT"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="x_ActRelationshipPatientTransport">
+		<xs:restriction base="ActRelationshipType">
+			<xs:enumeration value="ARR"/>
+			<xs:enumeration value="DEP"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="x_ActRelationshipPertinientInfo">
+		<xs:restriction base="ActRelationshipType">
+			<xs:enumeration value="CAUS"/>
+			<xs:enumeration value="MFST"/>
+			<xs:enumeration value="REFR"/>
+			<xs:enumeration value="SPRT"/>
+			<xs:enumeration value="SUBJ"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ActSite">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="AnimalActSite">
+		<xs:restriction base="ActSite"/>
+	</xs:simpleType>
+	<xs:simpleType name="HumanActSite">
+		<xs:restriction base="ActSite"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActStatus">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActStatusNormal">
+		<xs:restriction base="ActStatus"/>
+	</xs:simpleType>
+	<xs:simpleType name="x_DocumentStatus">
+		<xs:restriction base="ActStatus"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActUncertainty">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="AddressPartType">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="AdditionalLocator">
+		<xs:restriction base="AddressPartType"/>
+	</xs:simpleType>
+	<xs:simpleType name="DeliveryAddressLine">
+		<xs:restriction base="AddressPartType"/>
+	</xs:simpleType>
+	<xs:simpleType name="DeliveryModeIdentifier">
+		<xs:restriction base="DeliveryAddressLine"/>
+	</xs:simpleType>
+	<xs:simpleType name="StreetAddressLine">
+		<xs:restriction base="AddressPartType"/>
+	</xs:simpleType>
+	<xs:simpleType name="BuildingNumber">
+		<xs:restriction base="StreetAddressLine"/>
+	</xs:simpleType>
+	<xs:simpleType name="StreetName">
+		<xs:restriction base="StreetAddressLine"/>
+	</xs:simpleType>
+	<xs:simpleType name="AdministrativeGender">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="AmericanIndianAlaskaNativeLanguages">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="CalendarCycle">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="CalendarCycleOneLetter">
+		<xs:restriction base="CalendarCycle"/>
+	</xs:simpleType>
+	<xs:simpleType name="CalendarCycleTwoLetter">
+		<xs:restriction base="CalendarCycle"/>
+	</xs:simpleType>
+	<xs:simpleType name="GregorianCalendarCycle">
+		<xs:restriction base="CalendarCycleTwoLetter"/>
+	</xs:simpleType>
+	<xs:simpleType name="Charset">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="CodeSystem">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="CodingRationale">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="CommunicationFunctionType">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="CompressionAlgorithm">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="ConceptGenerality">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="Confidentiality">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="ConfidentialityByAccessKind">
+		<xs:restriction base="Confidentiality"/>
+	</xs:simpleType>
+	<xs:simpleType name="x_BasicConfidentialityKind">
+		<xs:restriction base="ConfidentialityByAccessKind"/>
+	</xs:simpleType>
+	<xs:simpleType name="ConfidentialityByInfoType">
+		<xs:restriction base="Confidentiality"/>
+	</xs:simpleType>
+	<xs:simpleType name="ConfidentialityModifiers">
+		<xs:restriction base="Confidentiality"/>
+	</xs:simpleType>
+	<xs:simpleType name="ContainerCap">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="MedicationCap">
+		<xs:restriction base="ContainerCap"/>
+	</xs:simpleType>
+	<xs:simpleType name="ContainerSeparator">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="ContextControl">
+		<xs:restriction base="cs">
+			<xs:enumeration value="AN"/>
+			<xs:enumeration value="ON"/>
+			<xs:enumeration value="AP"/>
+			<xs:enumeration value="OP"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ContextControlAdditive">
+		<xs:restriction base="ContextControl">
+			<xs:enumeration value="AN"/>
+			<xs:enumeration value="AP"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ContextControlNonPropagating">
+		<xs:restriction base="ContextControl">
+			<xs:enumeration value="AN"/>
+			<xs:enumeration value="ON"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ContextControlOverriding">
+		<xs:restriction base="ContextControl">
+			<xs:enumeration value="ON"/>
+			<xs:enumeration value="OP"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ContextControlPropagating">
+		<xs:restriction base="ContextControl">
+			<xs:enumeration value="AP"/>
+			<xs:enumeration value="OP"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Country">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="Currency">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataType">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeDataValue">
+		<xs:restriction base="DataType"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeAnnotated">
+		<xs:restriction base="DataTypeDataValue"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeAnnotatedConceptDescriptor">
+		<xs:restriction base="DataTypeAnnotated"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeAnnotatedPhysicalQuantity">
+		<xs:restriction base="DataTypeAnnotated"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeBag">
+		<xs:restriction base="DataTypeDataValue"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeBagOfConceptDescriptors">
+		<xs:restriction base="DataTypeBag"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeBagOfPhysicalQuantities">
+		<xs:restriction base="DataTypeBag"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeBoolean">
+		<xs:restriction base="DataTypeDataValue"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeConceptDescriptor">
+		<xs:restriction base="DataTypeDataValue"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeCodedSimpleValue">
+		<xs:restriction base="DataTypeConceptDescriptor"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeCodedValue">
+		<xs:restriction base="DataTypeConceptDescriptor"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeCodedWithEquivalents">
+		<xs:restriction base="DataTypeConceptDescriptor"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeConceptRole">
+		<xs:restriction base="DataTypeDataValue"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeHistorical">
+		<xs:restriction base="DataTypeDataValue"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeHistoricalAddress">
+		<xs:restriction base="DataTypeHistorical"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeInstanceIdentifier">
+		<xs:restriction base="DataTypeDataValue"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeObjectIdentifier">
+		<xs:restriction base="DataTypeDataValue"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeQuantity">
+		<xs:restriction base="DataTypeDataValue"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeIntegerNumber">
+		<xs:restriction base="DataTypeQuantity"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeMonetaryAmount">
+		<xs:restriction base="DataTypeQuantity"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeParametricProbabilityDistribution">
+		<xs:restriction base="DataTypeQuantity"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypePhysicalQuantity">
+		<xs:restriction base="DataTypeQuantity"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeParametricProbabilityDistributionOfPhysicalQuantities">
+		<xs:restriction base="DataTypePhysicalQuantity"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypePointInTime">
+		<xs:restriction base="DataTypeQuantity"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeRatio">
+		<xs:restriction base="DataTypeQuantity"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeRealNumber">
+		<xs:restriction base="DataTypeQuantity"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeParametricProbabilityDistributionOfRealNumbers">
+		<xs:restriction base="DataTypeRealNumber"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeSequence">
+		<xs:restriction base="DataTypeDataValue"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeSequenceOfBooleans">
+		<xs:restriction base="DataTypeSequence"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeBinaryData">
+		<xs:restriction base="DataTypeSequenceOfBooleans"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeEncodedData">
+		<xs:restriction base="DataTypeBinaryData"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeCharacterString">
+		<xs:restriction base="DataTypeEncodedData"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeAddressPart">
+		<xs:restriction base="DataTypeSequenceOfPostalAddressParts"/>
+		<!-- ??? -->
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeOrganizationName">
+		<xs:restriction base="cs"/>
+		<!-- ???  -->
+	</xs:simpleType>
+	<xs:simpleType name="DataTypePersonNamePart">
+		<xs:restriction base="DataTypeSequenceOfPersonNameParts"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeSequenceOfSequencesOfDataValues">
+		<xs:restriction base="DataTypeSequence"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeSequenceOfSequenceOfBooleans">
+		<xs:restriction base="DataTypeSequenceOfSequencesOfDataValues"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeSequenceOfBinaryData">
+		<xs:restriction base="DataTypeSequenceOfSequenceOfBooleans"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeSequenceOfEncodedData">
+		<xs:restriction base="DataTypeSequenceOfBinaryData"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeSequenceOfCharacterStrings">
+		<xs:restriction base="DataTypeSequenceOfEncodedData"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeSequenceOfPersonNameParts">
+		<xs:restriction base="DataTypeSequenceOfCharacterStrings"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypePersonNameType">
+		<xs:restriction base="DataTypeSequenceOfPersonNameParts"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeSequenceOfPostalAddressParts">
+		<xs:restriction base="DataTypeSequenceOfCharacterStrings"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypePostalAndResidentialAddress">
+		<xs:restriction base="DataTypeSequenceOfPostalAddressParts"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeSet">
+		<xs:restriction base="DataTypeDataValue"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeSetOfCharacterStrings">
+		<xs:restriction base="DataTypeSet"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeSetOfConceptDescriptors">
+		<xs:restriction base="DataTypeSet"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeSetOfCodedSimpleValue">
+		<xs:restriction base="DataTypeSetOfConceptDescriptors"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeSetOfCodedValue">
+		<xs:restriction base="DataTypeSetOfConceptDescriptors"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeSetOfCodedWithEquivalents">
+		<xs:restriction base="DataTypeSetOfConceptDescriptors"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeSetOfIntervalsOfPhysicalQuantitiy">
+		<xs:restriction base="DataTypeSet"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeSetOfPhysicalQuantities">
+		<xs:restriction base="DataTypeSet"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeSetOfSequencesOfCharacterStrings">
+		<xs:restriction base="DataTypeSet"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeSetOfAddresses">
+		<xs:restriction base="DataTypeSetOfSequencesOfCharacterStrings"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeSetOfHistoricalAddresses">
+		<xs:restriction base="DataTypeSetOfAddresses"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeHistoryOfAddress">
+		<xs:restriction base="DataTypeSetOfHistoricalAddresses"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeSetOfUncertainProbabilisticConceptDescriptor">
+		<xs:restriction base="DataTypeSet"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeNonParametricProbabilityDistributionOfConceptDescriptor">
+		<xs:restriction base="DataTypeSetOfUncertainProbabilisticConceptDescriptor"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeSetOfUncertainProbabilisticIntervalOfPhysicalQuantities">
+		<xs:restriction base="DataTypeSet"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeNonParametricProbabilityDistributionOfIntervalOfPhysicalQuantities">
+		<xs:restriction base="DataTypeSetOfUncertainProbabilisticIntervalOfPhysicalQuantities"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeSetOfUncertainValueProbabilistic">
+		<xs:restriction base="DataTypeDataValue"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeNonParametricProbabilityDistribution">
+		<xs:restriction base="DataTypeSetOfUncertainValueProbabilistic"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeUncertainValueNarrative">
+		<xs:restriction base="DataTypeDataValue"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeUncertainNarrativeConceptDescriptor">
+		<xs:restriction base="DataTypeUncertainValueNarrative"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeUncertainValueProbabilistic">
+		<xs:restriction base="DataTypeDataValue"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeUncertainProbabilisticConceptDescriptor">
+		<xs:restriction base="DataTypeUncertainValueProbabilistic"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeUncertainProbabilisticIntervalOfPhysicalQuantities">
+		<xs:restriction base="DataTypeUncertainValueProbabilistic"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeUniversalResourceLocator">
+		<xs:restriction base="DataTypeDataValue"/>
+	</xs:simpleType>
+	<xs:simpleType name="DataTypeTelecommunicationAddress">
+		<xs:restriction base="DataTypeUniversalResourceLocator"/>
+	</xs:simpleType>
+	<xs:simpleType name="DeviceAlertLevel">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="DocumentCompletion">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="DocumentStorage">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="DocumentStorageActive">
+		<xs:restriction base="DocumentStorage"/>
+	</xs:simpleType>
+	<xs:simpleType name="EditStatus">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="ActiveEditStatus">
+		<xs:restriction base="EditStatus"/>
+	</xs:simpleType>
+	<xs:simpleType name="InactiveEditStatus">
+		<xs:restriction base="EditStatus"/>
+	</xs:simpleType>
+	<xs:simpleType name="ObsoleteEditStatus">
+		<xs:restriction base="EditStatus"/>
+	</xs:simpleType>
+	<xs:simpleType name="RejectedEditStatus">
+		<xs:restriction base="EditStatus"/>
+	</xs:simpleType>
+	<xs:simpleType name="EducationLevel">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="EmployeeJobClass">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="EncounterAdmissionSource">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="EncounterReferralSource">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="EncounterSpecialCourtesy">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="EntityClass">
+		<xs:restriction base="cs">
+			<xs:enumeration value="ENT"/>
+			<xs:enumeration value="HCE"/>
+			<xs:enumeration value="LIV"/>
+			<xs:enumeration value="NLIV"/>
+			<xs:enumeration value="ANM"/>
+			<xs:enumeration value="MIC"/>
+			<xs:enumeration value="PLNT"/>
+			<xs:enumeration value="PSN"/>
+			<xs:enumeration value="MAT"/>
+			<xs:enumeration value="MMAT"/>
+			<xs:enumeration value="CONT"/>
+			<xs:enumeration value="HOLD"/>
+			<xs:enumeration value="DEV"/>
+			<xs:enumeration value="CER"/>
+			<xs:enumeration value="MODDV"/>
+			<xs:enumeration value="CHEM"/>
+			<xs:enumeration value="FOOD"/>
+			<xs:enumeration value="ORG"/>
+			<xs:enumeration value="PUB"/>
+			<xs:enumeration value="STATE"/>
+			<xs:enumeration value="PLC"/>
+			<xs:enumeration value="CITY"/>
+			<xs:enumeration value="COUNTRY"/>
+			<xs:enumeration value="COUNTY"/>
+			<xs:enumeration value="PROVINCE"/>
+			<xs:enumeration value="RGRP"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="EntityClassRoot">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="EntityClassDocumentReceiving">
+		<xs:restriction base="EntityClass">
+			<xs:enumeration value="ORG"/>
+			<xs:enumeration value="PUB"/>
+			<xs:enumeration value="STATE"/>
+			<xs:enumeration value="PSN"/>
+			<xs:enumeration value="HCE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="EntityClassPersonOrOrgReceiving">
+		<xs:restriction base="EntityClassDocumentReceiving">
+			<xs:enumeration value="ORG"/>
+			<xs:enumeration value="PUB"/>
+			<xs:enumeration value="STATE"/>
+			<xs:enumeration value="PSN"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="EntityClassLivingSubject">
+		<xs:restriction base="EntityClass">
+			<xs:enumeration value="NLIV"/>
+			<xs:enumeration value="ANM"/>
+			<xs:enumeration value="MIC"/>
+			<xs:enumeration value="PLNT"/>
+			<xs:enumeration value="PSN"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="EntityClassNonPersonLivingSubject">
+		<xs:restriction base="EntityClassLivingSubject">
+			<xs:enumeration value="ANM"/>
+			<xs:enumeration value="MIC"/>
+			<xs:enumeration value="PLNT"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="EntityClassMaterial">
+		<xs:restriction base="EntityClass">
+			<xs:enumeration value="MMAT"/>
+			<xs:enumeration value="CONT"/>
+			<xs:enumeration value="HOLD"/>
+			<xs:enumeration value="DEV"/>
+			<xs:enumeration value="CER"/>
+			<xs:enumeration value="MODDV"/>
+			<xs:enumeration value="CHEM"/>
+			<xs:enumeration value="FOOD"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="EntityClassManufacturedMaterial">
+		<xs:restriction base="EntityClassMaterial">
+			<xs:enumeration value="CONT"/>
+			<xs:enumeration value="HOLD"/>
+			<xs:enumeration value="DEV"/>
+			<xs:enumeration value="CER"/>
+			<xs:enumeration value="MODDV"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="EntityClassContainer">
+		<xs:restriction base="EntityClassManufacturedMaterial">
+			<xs:enumeration value="HOLD"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="EntityClassDevice">
+		<xs:restriction base="EntityClassManufacturedMaterial">
+			<xs:enumeration value="CER"/>
+			<xs:enumeration value="MODDV"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="EntityClassOrganization">
+		<xs:restriction base="EntityClass">
+			<xs:enumeration value="PUB"/>
+			<xs:enumeration value="STATE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="EntityClassPlace">
+		<xs:restriction base="EntityClass">
+			<xs:enumeration value="CITY"/>
+			<xs:enumeration value="COUNTRY"/>
+			<xs:enumeration value="COUNTY"/>
+			<xs:enumeration value="PROVINCE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="EntityCode">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="MaterialEntityClassType">
+		<xs:restriction base="EntityCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="ContainerEntityType">
+		<xs:restriction base="MaterialEntityClassType"/>
+	</xs:simpleType>
+	<xs:simpleType name="PackageEntityType">
+		<xs:restriction base="ContainerEntityType"/>
+	</xs:simpleType>
+	<xs:simpleType name="CompliancePackageEntityType">
+		<xs:restriction base="PackageEntityType"/>
+	</xs:simpleType>
+	<xs:simpleType name="KitEntityType">
+		<xs:restriction base="PackageEntityType"/>
+	</xs:simpleType>
+	<xs:simpleType name="NonRigidContainerEntityType">
+		<xs:restriction base="PackageEntityType"/>
+	</xs:simpleType>
+	<xs:simpleType name="RigidContainerEntityType">
+		<xs:restriction base="PackageEntityType"/>
+	</xs:simpleType>
+	<xs:simpleType name="BlisterPackEntityType">
+		<xs:restriction base="CompliancePackageEntityType"/>
+	</xs:simpleType>
+	<xs:simpleType name="IndividualPackageEntityType">
+		<xs:restriction base="RigidContainerEntityType"/>
+	</xs:simpleType>
+	<xs:simpleType name="MultiUseContainerEntityType">
+		<xs:restriction base="RigidContainerEntityType"/>
+	</xs:simpleType>
+	<xs:simpleType name="BottleEntityType">
+		<xs:restriction base="MultiUseContainerEntityType"/>
+	</xs:simpleType>
+	<xs:simpleType name="PlasticBottleEntityType">
+		<xs:restriction base="BottleEntityType"/>
+	</xs:simpleType>
+	<xs:simpleType name="DrugEntity">
+		<xs:restriction base="MaterialEntityClassType"/>
+	</xs:simpleType>
+	<xs:simpleType name="ClinicalDrug">
+		<xs:restriction base="DrugEntity"/>
+	</xs:simpleType>
+	<xs:simpleType name="ManufacturedDrug">
+		<xs:restriction base="ClinicalDrug"/>
+	</xs:simpleType>
+	<xs:simpleType name="MaterialEntityAdditive">
+		<xs:restriction base="MaterialEntityClassType"/>
+	</xs:simpleType>
+	<xs:simpleType name="MedicalDevice">
+		<xs:restriction base="MaterialEntityClassType"/>
+	</xs:simpleType>
+	<xs:simpleType name="AccessMedicalDevice">
+		<xs:restriction base="MedicalDevice"/>
+	</xs:simpleType>
+	<xs:simpleType name="LineAccessMedicalDevice">
+		<xs:restriction base="AccessMedicalDevice"/>
+	</xs:simpleType>
+	<xs:simpleType name="AdministrationMedicalDevice">
+		<xs:restriction base="MedicalDevice"/>
+	</xs:simpleType>
+	<xs:simpleType name="InhalerMedicalDevice">
+		<xs:restriction base="AdministrationMedicalDevice"/>
+	</xs:simpleType>
+	<xs:simpleType name="InjectionMedicalDevice">
+		<xs:restriction base="AdministrationMedicalDevice"/>
+	</xs:simpleType>
+	<xs:simpleType name="PlaceEntityType">
+		<xs:restriction base="EntityCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="EntityDeterminer">
+		<xs:restriction base="cs">
+			<xs:enumeration value="KIND"/>
+			<xs:enumeration value="QUANTIFIED_KIND"/>
+			<xs:enumeration value="INSTANCE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="EntityDeterminerDetermined">
+		<xs:restriction base="EntityDeterminer">
+			<xs:enumeration value="QUANTIFIED_KIND"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="EntityHandling">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="EntityNamePartQualifier">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="OrganizationNamePartQualifier">
+		<xs:restriction base="EntityNamePartQualifier"/>
+	</xs:simpleType>
+	<xs:simpleType name="PersonNamePartQualifier">
+		<xs:restriction base="EntityNamePartQualifier"/>
+	</xs:simpleType>
+	<xs:simpleType name="PersonNamePartAffixTypes">
+		<xs:restriction base="PersonNamePartQualifier"/>
+	</xs:simpleType>
+	<xs:simpleType name="PersonNamePartChangeQualifier">
+		<xs:restriction base="PersonNamePartQualifier"/>
+	</xs:simpleType>
+	<xs:simpleType name="PersonNamePartMiscQualifier">
+		<xs:restriction base="PersonNamePartQualifier"/>
+	</xs:simpleType>
+	<xs:simpleType name="EntityNameUse">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="OrganizationNameUse">
+		<xs:restriction base="EntityNameUse"/>
+	</xs:simpleType>
+	<xs:simpleType name="PersonNameUse">
+		<xs:restriction base="EntityNameUse"/>
+	</xs:simpleType>
+	<xs:simpleType name="NameRepresentationUse">
+		<xs:restriction base="EntityNameUse"/>
+	</xs:simpleType>
+	<xs:simpleType name="EntityRisk">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="MaterialDangerInfectious">
+		<xs:restriction base="EntityRisk"/>
+	</xs:simpleType>
+	<xs:simpleType name="MaterialDangerInflammable">
+		<xs:restriction base="EntityRisk"/>
+	</xs:simpleType>
+	<xs:simpleType name="EntityStatus">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="EntityStatusNormal">
+		<xs:restriction base="EntityStatus"/>
+	</xs:simpleType>
+	<xs:simpleType name="EquipmentAlertLevel">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="Ethnicity">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="EthnicityHispanic">
+		<xs:restriction base="Ethnicity"/>
+	</xs:simpleType>
+	<xs:simpleType name="EthnicityHispanicCentralAmerican">
+		<xs:restriction base="EthnicityHispanic"/>
+	</xs:simpleType>
+	<xs:simpleType name="EthnicityHispanicMexican">
+		<xs:restriction base="EthnicityHispanic"/>
+	</xs:simpleType>
+	<xs:simpleType name="EthnicityHispanicSouthAmerican">
+		<xs:restriction base="EthnicityHispanic"/>
+	</xs:simpleType>
+	<xs:simpleType name="EthnicityHispanicSpaniard">
+		<xs:restriction base="EthnicityHispanic"/>
+	</xs:simpleType>
+	<xs:simpleType name="GenderStatus">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="GTSAbbreviation">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="GTSAbbreviationHolidays">
+		<xs:restriction base="GTSAbbreviation"/>
+	</xs:simpleType>
+	<xs:simpleType name="GTSAbbreviatioHolidaysChristianRoman">
+		<xs:restriction base="GTSAbbreviationHolidays"/>
+	</xs:simpleType>
+	<xs:simpleType name="GTSAbbreviationHolidaysUSNational">
+		<xs:restriction base="GTSAbbreviationHolidays"/>
+	</xs:simpleType>
+	<xs:simpleType name="HealthcareProviderTaxonomyHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="IndividualHealthcareProviderHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="AbstractChiropractersHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="ChiropractersHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="BehavioralHealthAndOrSocialServiceProviderHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="NeuropsychologistHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="PsychoanalystHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="PsychologistHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="SocialWorkerHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="DentalServiceProviderHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="DentistHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="DietaryAndOrNutritionalServiceProviderHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="DietaryManagerHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="NutritionistHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RegisteredDieticianHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="EmergencyMedicalServiceProviderHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="EyeAndVisionServiceProviderHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="EyeAndVisionServiceProviderTechnicianAndOrTechnologistHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="OptometristHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="NursingServiceProviderHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RegisteredNurseHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="NursingServiceRelatedProviderHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="NursingServiceRelatedProviderTechnicianHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="OtherPhysicianProviderHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="OtherPhysicianOsteopathHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="OtherServiceProviderHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="OtherServiceProviderContractorHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="OtherServiceProviderSpecialistHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="VeterinarianHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="OtherTechnologistAndOrTechnicianHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="CardiologySpecialistOrTechnologistHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="HealthInformationSpecialistOrTechnologistHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="HealthInformationTechnicianHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="OtherTechnologistOrTechnicianHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="OtherTechnologistOrTechnicianProviderHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="PathologySpecialistOrTechnologistHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="PathologyTechnicianHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RadiologicTechnologistHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="PharmacyServiceProviderHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="PharmacistHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="PharmacyServiceProviderTechnicianHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="PhysicianAssistantsAndOrAdvancedPracticeNursingProviderHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="ClinicalNurseSpecialistHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="NursePractitionerHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="PhysicianAssistantHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="PhysicianHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="PhysicianAndOrOsteopathHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="PodiatricMedicineAndOrSurgeryServiceProviderHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="PodiatristHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RespiratoryAndOrRehabilitativeAndOrRestorativeProviderHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="OccupationalTherapistHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="PhysicalTherapistHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RehabilitationCounselorHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RespiratoryAndOrRehabilitativeAndOrRestorativeSpecialistOrTechnologistHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RespiratoryTherapistHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="SpeechAndOrLanguageAndOrHearingServiceProviderHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="AudiologistHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="SpeechAndOrLanguageAndOrHearingServiceSpecialistOrTechnologistHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="OrganizationalHealthcareProviderHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="AbstractHealthcareProviderAgencyHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="HealthcareProviderAgencyHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="AmbulatoryHealthCareFacilityHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="AmbulatoryClinicOrCenterHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="LaboratoryHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="ManagedCareOrganizationHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="SupplierHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="DurableMedicalEquipmentAndOrMedicalSupplySupplierHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="TransportationServiceHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="AmbulanceHIPAA">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="HL7CommitteeIDInRIM">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="HL7ConformanceInclusion">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="InclusionNotMandatory">
+		<xs:restriction base="HL7ConformanceInclusion"/>
+	</xs:simpleType>
+	<xs:simpleType name="InclusionNotRequired">
+		<xs:restriction base="InclusionNotMandatory"/>
+	</xs:simpleType>
+	<xs:simpleType name="HL7DefinedRoseProperty">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="HL7UpdateMode">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="SetUpdateMode">
+		<xs:restriction base="HL7UpdateMode"/>
+	</xs:simpleType>
+	<xs:simpleType name="HtmlLinkType">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntegrityCheckAlgorithm">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="LanguageAbilityMode">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="LanguageAbilityProficiency">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="LivingArrangement">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="Institution">
+		<xs:restriction base="LivingArrangement"/>
+	</xs:simpleType>
+	<xs:simpleType name="LocalMarkupIgnore">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="LocalRemoteControlState">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="ManagedParticipationStatus">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="ManagedParticipationStatusNormal">
+		<xs:restriction base="ManagedParticipationStatus"/>
+	</xs:simpleType>
+	<xs:simpleType name="MapRelationship">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="MaritalStatus">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="MDFAttributeType">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="MdfHmdMetSourceType">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="MdfHmdRowType">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="MdfRmimRowType">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="MDFSubjectAreaPrefix">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="MediaType">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="ApplicationMediaType">
+		<xs:restriction base="MediaType"/>
+	</xs:simpleType>
+	<xs:simpleType name="AudioMediaType">
+		<xs:restriction base="MediaType"/>
+	</xs:simpleType>
+	<xs:simpleType name="ImageMediaType">
+		<xs:restriction base="MediaType"/>
+	</xs:simpleType>
+	<xs:simpleType name="ModelMediaType">
+		<xs:restriction base="MediaType"/>
+	</xs:simpleType>
+	<xs:simpleType name="MultipartMediaType">
+		<xs:restriction base="MediaType"/>
+	</xs:simpleType>
+	<xs:simpleType name="TextMediaType">
+		<xs:restriction base="MediaType"/>
+	</xs:simpleType>
+	<xs:simpleType name="VideoMediaType">
+		<xs:restriction base="MediaType"/>
+	</xs:simpleType>
+	<xs:simpleType name="MessageCondition">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="ModifyIndicator">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="NullFlavor">
+		<xs:restriction base="cs">
+			<xs:enumeration value="NI"/>
+			<xs:enumeration value="UNK"/>
+			<xs:enumeration value="ASKU"/>
+			<xs:enumeration value="NAV"/>
+			<xs:enumeration value="NASK"/>
+			<xs:enumeration value="OTH"/>
+			<xs:enumeration value="NINF"/>
+			<xs:enumeration value="PINF"/>
+			<xs:enumeration value="MSK"/>
+			<xs:enumeration value="NA"/>
+			<xs:enumeration value="NP"/>
+		</xs:restriction>
+		<!-- left in for ease in coding -->
+	</xs:simpleType>
+	<xs:simpleType name="NoInformation">
+		<xs:restriction base="NullFlavor">
+			<xs:enumeration value="UNK"/>
+			<xs:enumeration value="ASKU"/>
+			<xs:enumeration value="NAV"/>
+			<xs:enumeration value="NASK"/>
+			<xs:enumeration value="OTH"/>
+			<xs:enumeration value="NINF"/>
+			<xs:enumeration value="PINF"/>
+			<xs:enumeration value="MSK"/>
+			<xs:enumeration value="NA"/>
+			<xs:enumeration value="NP"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ObservationInterpretation">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="ObservationInterpretationChange">
+		<xs:restriction base="ObservationInterpretation"/>
+	</xs:simpleType>
+	<xs:simpleType name="ObservationInterpretationExceptions">
+		<xs:restriction base="ObservationInterpretation"/>
+	</xs:simpleType>
+	<xs:simpleType name="ObservationInterpretationNormality">
+		<xs:restriction base="ObservationInterpretation"/>
+	</xs:simpleType>
+	<xs:simpleType name="ObservationInterpretationNormalityAbnormal">
+		<xs:restriction base="ObservationInterpretationNormality"/>
+	</xs:simpleType>
+	<xs:simpleType name="ObservationInterpretationNormalityAlert">
+		<xs:restriction base="ObservationInterpretationNormalityAbnormal"/>
+	</xs:simpleType>
+	<xs:simpleType name="ObservationInterpretationNormalityHigh">
+		<xs:restriction base="ObservationInterpretationNormalityAbnormal"/>
+	</xs:simpleType>
+	<xs:simpleType name="ObservationInterpretationNormalityLow">
+		<xs:restriction base="ObservationInterpretationNormalityAbnormal"/>
+	</xs:simpleType>
+	<xs:simpleType name="ObservationInterpretationSusceptibility">
+		<xs:restriction base="ObservationInterpretation"/>
+	</xs:simpleType>
+	<xs:simpleType name="ObservationMethod">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="ObservationValue">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="AnnotationValue">
+		<xs:restriction base="ObservationValue"/>
+	</xs:simpleType>
+	<xs:simpleType name="ECGAnnotationValue">
+		<xs:restriction base="AnnotationValue"/>
+	</xs:simpleType>
+	<xs:simpleType name="DiagnosisValue">
+		<xs:restriction base="ObservationValue"/>
+	</xs:simpleType>
+	<xs:simpleType name="PartialCompletionScale">
+		<xs:restriction base="ObservationValue"/>
+	</xs:simpleType>
+	<xs:simpleType name="SeverityObservation">
+		<xs:restriction base="ObservationValue"/>
+	</xs:simpleType>
+	<xs:simpleType name="OrderableDrugForm">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="AdministrableDrugForm">
+		<xs:restriction base="OrderableDrugForm"/>
+	</xs:simpleType>
+	<xs:simpleType name="DispensableDrugForm">
+		<xs:restriction base="OrderableDrugForm"/>
+	</xs:simpleType>
+	<xs:simpleType name="GasDrugForm">
+		<xs:restriction base="DispensableDrugForm"/>
+	</xs:simpleType>
+	<xs:simpleType name="GasLiquidMixture">
+		<xs:restriction base="DispensableDrugForm"/>
+	</xs:simpleType>
+	<xs:simpleType name="AerosolDrugForm">
+		<xs:restriction base="GasLiquidMixture"/>
+	</xs:simpleType>
+	<xs:simpleType name="FoamDrugForm">
+		<xs:restriction base="GasLiquidMixture"/>
+	</xs:simpleType>
+	<xs:simpleType name="VaginalFoam">
+		<xs:restriction base="FoamDrugForm"/>
+	</xs:simpleType>
+	<xs:simpleType name="GasSolidSpray">
+		<xs:restriction base="DispensableDrugForm"/>
+	</xs:simpleType>
+	<xs:simpleType name="InhalantDrugForm">
+		<xs:restriction base="GasSolidSpray"/>
+	</xs:simpleType>
+	<xs:simpleType name="Liquid">
+		<xs:restriction base="DispensableDrugForm"/>
+	</xs:simpleType>
+	<xs:simpleType name="LiquidCleanser">
+		<xs:restriction base="Liquid"/>
+	</xs:simpleType>
+	<xs:simpleType name="OilDrugForm">
+		<xs:restriction base="Liquid"/>
+	</xs:simpleType>
+	<xs:simpleType name="SolutionDrugForm">
+		<xs:restriction base="Liquid"/>
+	</xs:simpleType>
+	<xs:simpleType name="DropsDrugForm">
+		<xs:restriction base="SolutionDrugForm"/>
+	</xs:simpleType>
+	<xs:simpleType name="IrrigationSolution">
+		<xs:restriction base="SolutionDrugForm"/>
+	</xs:simpleType>
+	<xs:simpleType name="OralSolution">
+		<xs:restriction base="SolutionDrugForm"/>
+	</xs:simpleType>
+	<xs:simpleType name="TopicalSolution">
+		<xs:restriction base="SolutionDrugForm"/>
+	</xs:simpleType>
+	<xs:simpleType name="LiquidLiquidEmulsion">
+		<xs:restriction base="DispensableDrugForm"/>
+	</xs:simpleType>
+	<xs:simpleType name="CreamDrugForm">
+		<xs:restriction base="LiquidLiquidEmulsion"/>
+	</xs:simpleType>
+	<xs:simpleType name="VaginalCream">
+		<xs:restriction base="CreamDrugForm"/>
+	</xs:simpleType>
+	<xs:simpleType name="LotionDrugForm">
+		<xs:restriction base="LiquidLiquidEmulsion"/>
+	</xs:simpleType>
+	<xs:simpleType name="OintmentDrugForm">
+		<xs:restriction base="LiquidLiquidEmulsion"/>
+	</xs:simpleType>
+	<xs:simpleType name="VaginalOintment">
+		<xs:restriction base="OintmentDrugForm"/>
+	</xs:simpleType>
+	<xs:simpleType name="LiquidSolidSuspension">
+		<xs:restriction base="DispensableDrugForm"/>
+	</xs:simpleType>
+	<xs:simpleType name="GelDrugForm">
+		<xs:restriction base="LiquidSolidSuspension"/>
+	</xs:simpleType>
+	<xs:simpleType name="VaginalGel">
+		<xs:restriction base="GelDrugForm"/>
+	</xs:simpleType>
+	<xs:simpleType name="PasteDrugForm">
+		<xs:restriction base="LiquidSolidSuspension"/>
+	</xs:simpleType>
+	<xs:simpleType name="SuspensionDrugForm">
+		<xs:restriction base="LiquidSolidSuspension"/>
+	</xs:simpleType>
+	<xs:simpleType name="OralSuspension">
+		<xs:restriction base="SuspensionDrugForm"/>
+	</xs:simpleType>
+	<xs:simpleType name="ExtendedReleaseSuspension">
+		<xs:restriction base="OralSuspension"/>
+	</xs:simpleType>
+	<xs:simpleType name="SolidDrugForm">
+		<xs:restriction base="DispensableDrugForm"/>
+	</xs:simpleType>
+	<xs:simpleType name="BarDrugForm">
+		<xs:restriction base="SolidDrugForm"/>
+	</xs:simpleType>
+	<xs:simpleType name="BarSoapDrugForm">
+		<xs:restriction base="BarDrugForm"/>
+	</xs:simpleType>
+	<xs:simpleType name="PadDrugForm">
+		<xs:restriction base="SolidDrugForm"/>
+	</xs:simpleType>
+	<xs:simpleType name="PatchDrugForm">
+		<xs:restriction base="SolidDrugForm"/>
+	</xs:simpleType>
+	<xs:simpleType name="TransdermalPatch">
+		<xs:restriction base="PatchDrugForm"/>
+	</xs:simpleType>
+	<xs:simpleType name="PillDrugForm">
+		<xs:restriction base="SolidDrugForm"/>
+	</xs:simpleType>
+	<xs:simpleType name="CapsuleDrugForm">
+		<xs:restriction base="PillDrugForm"/>
+	</xs:simpleType>
+	<xs:simpleType name="OralCapsule">
+		<xs:restriction base="CapsuleDrugForm"/>
+	</xs:simpleType>
+	<xs:simpleType name="EntericCoatedCapsule">
+		<xs:restriction base="OralCapsule"/>
+	</xs:simpleType>
+	<xs:simpleType name="ExtendedReleaseCapsule">
+		<xs:restriction base="OralCapsule"/>
+	</xs:simpleType>
+	<xs:simpleType name="TabletDrugForm">
+		<xs:restriction base="PillDrugForm"/>
+	</xs:simpleType>
+	<xs:simpleType name="OralTablet">
+		<xs:restriction base="TabletDrugForm"/>
+	</xs:simpleType>
+	<xs:simpleType name="BuccalTablet">
+		<xs:restriction base="OralTablet"/>
+	</xs:simpleType>
+	<xs:simpleType name="EntericCoatedTablet">
+		<xs:restriction base="OralTablet"/>
+	</xs:simpleType>
+	<xs:simpleType name="ExtendedReleaseTablet">
+		<xs:restriction base="OralTablet"/>
+	</xs:simpleType>
+	<xs:simpleType name="PowderDrugForm">
+		<xs:restriction base="SolidDrugForm"/>
+	</xs:simpleType>
+	<xs:simpleType name="TopicalPowder">
+		<xs:restriction base="PowderDrugForm"/>
+	</xs:simpleType>
+	<xs:simpleType name="SuppositoryDrugForm">
+		<xs:restriction base="SolidDrugForm"/>
+	</xs:simpleType>
+	<xs:simpleType name="SwabDrugForm">
+		<xs:restriction base="SolidDrugForm"/>
+	</xs:simpleType>
+	<xs:simpleType name="OrganizationNameType">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="ParameterizedDataType">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="ParameterizedDataTypeBag">
+		<xs:restriction base="ParameterizedDataType"/>
+	</xs:simpleType>
+	<xs:simpleType name="ParameterizedDataTypeSequence">
+		<xs:restriction base="ParameterizedDataType"/>
+	</xs:simpleType>
+	<xs:simpleType name="ParameterizedDataTypeSet">
+		<xs:restriction base="ParameterizedDataType"/>
+	</xs:simpleType>
+	<xs:simpleType name="ParameterizedDataTypeEventRelatedInterval">
+		<xs:restriction base="ParameterizedDataTypeSet"/>
+	</xs:simpleType>
+	<xs:simpleType name="ParameterizedDataTypeInterval">
+		<xs:restriction base="ParameterizedDataTypeSet"/>
+	</xs:simpleType>
+	<xs:simpleType name="ParameterizedDataTypePeriodicInterval">
+		<xs:restriction base="ParameterizedDataTypeSet"/>
+	</xs:simpleType>
+	<xs:simpleType name="ParameterizedDataTypeType">
+		<xs:restriction base="ParameterizedDataType"/>
+	</xs:simpleType>
+	<xs:simpleType name="ParameterizedDataTypeAnnotated">
+		<xs:restriction base="ParameterizedDataTypeType"/>
+	</xs:simpleType>
+	<xs:simpleType name="ParameterizedDataTypeHistorical">
+		<xs:restriction base="ParameterizedDataTypeType"/>
+	</xs:simpleType>
+	<xs:simpleType name="ParameterizedDataTypeNonParametricProbabilityDistribution">
+		<xs:restriction base="ParameterizedDataTypeType"/>
+	</xs:simpleType>
+	<xs:simpleType name="ParameterizedDataTypeParametricProbabilityDistribution">
+		<xs:restriction base="ParameterizedDataTypeType"/>
+	</xs:simpleType>
+	<xs:simpleType name="ParameterizedDataTypeUncertainValueNarrative">
+		<xs:restriction base="ParameterizedDataTypeType"/>
+	</xs:simpleType>
+	<xs:simpleType name="ParameterizedDataTypeUncertainValueProbabilistic">
+		<xs:restriction base="ParameterizedDataTypeType"/>
+	</xs:simpleType>
+	<xs:simpleType name="ParticipationFunction">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="ParticipationMode">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="ParticipationModeElectronicData">
+		<xs:restriction base="ParticipationMode"/>
+	</xs:simpleType>
+	<xs:simpleType name="ParticipationModeVerbal">
+		<xs:restriction base="ParticipationMode"/>
+	</xs:simpleType>
+	<xs:simpleType name="ParticipationModeWritten">
+		<xs:restriction base="ParticipationMode"/>
+	</xs:simpleType>
+	<xs:simpleType name="ParticipationSignature">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="ParticipationType">
+		<xs:restriction base="cs">
+			<xs:enumeration value="ADM"/>
+			<xs:enumeration value="ATND"/>
+			<xs:enumeration value="DIS"/>
+			<xs:enumeration value="ESC"/>
+			<xs:enumeration value="REF"/>
+			<xs:enumeration value="IND"/>
+			<xs:enumeration value="BEN"/>
+			<xs:enumeration value="COV"/>
+			<xs:enumeration value="HLD"/>
+			<xs:enumeration value="RCT"/>
+			<xs:enumeration value="RCV"/>
+			<xs:enumeration value="ENT"/>
+			<xs:enumeration value="INF"/>
+			<xs:enumeration value="NOT"/>
+			<xs:enumeration value="PRCP"/>
+			<xs:enumeration value="TRC"/>
+			<xs:enumeration value="DIST"/>
+			<xs:enumeration value="PPRF"/>
+			<xs:enumeration value="DIR"/>
+			<xs:enumeration value="CSM"/>
+			<xs:enumeration value="TPA"/>
+			<xs:enumeration value="DEV"/>
+			<xs:enumeration value="NRD"/>
+			<xs:enumeration value="RDV"/>
+			<xs:enumeration value="BBY"/>
+			<xs:enumeration value="DON"/>
+			<xs:enumeration value="PRD"/>
+			<xs:enumeration value="SBJ"/>
+			<xs:enumeration value="LOC"/>
+			<xs:enumeration value="DST"/>
+			<xs:enumeration value="ELOC"/>
+			<xs:enumeration value="ORG"/>
+			<xs:enumeration value="RML"/>
+			<xs:enumeration value="VIA"/>
+			<xs:enumeration value="AUTHEN"/>
+			<xs:enumeration value="LA"/>
+			<xs:enumeration value="CON"/>
+			<xs:enumeration value="AUT"/>
+			<xs:enumeration value="PRF"/>
+			<xs:enumeration value="SPRF"/>
+			<xs:enumeration value="VRF"/>
+			<xs:enumeration value="WIT"/>
+			<xs:enumeration value="CST"/>
+			<xs:enumeration value="RESP"/>
+			<xs:enumeration value="SPC"/>
+			<xs:enumeration value="RESPROV"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ParticipationAncillary">
+		<xs:restriction base="ParticipationType">
+			<xs:enumeration value="ADM"/>
+			<xs:enumeration value="ATND"/>
+			<xs:enumeration value="CON"/>
+			<xs:enumeration value="DIS"/>
+			<xs:enumeration value="ESC"/>
+			<xs:enumeration value="REF"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ParticipationIndirectTarget">
+		<xs:restriction base="ParticipationType">
+			<xs:enumeration value="BEN"/>
+			<xs:enumeration value="COV"/>
+			<xs:enumeration value="HLD"/>
+			<xs:enumeration value="RCT"/>
+			<xs:enumeration value="RCV"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ParticipationInformationGenerator">
+		<xs:restriction base="ParticipationType">
+			<xs:enumeration value="AUT"/>
+			<xs:enumeration value="ENT"/>
+			<xs:enumeration value="INF"/>
+			<xs:enumeration value="WIT"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ParticipationInformationRecipient">
+		<xs:restriction base="ParticipationType">
+			<xs:enumeration value="NOT"/>
+			<xs:enumeration value="PRCP"/>
+			<xs:enumeration value="TRC"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ParticipationPhysicalPerformer">
+		<xs:restriction base="ParticipationType">
+			<xs:enumeration value="DIST"/>
+			<xs:enumeration value="PPRF"/>
+			<xs:enumeration value="SPRF"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ParticipationTargetDirect">
+		<xs:restriction base="ParticipationType">
+			<xs:enumeration value="CSM"/>
+			<xs:enumeration value="TPA"/>
+			<xs:enumeration value="DEV"/>
+			<xs:enumeration value="NRD"/>
+			<xs:enumeration value="RDV"/>
+			<xs:enumeration value="BBY"/>
+			<xs:enumeration value="DON"/>
+			<xs:enumeration value="PRD"/>
+			<xs:enumeration value="SBJ"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ParticipationConsumable">
+		<xs:restriction base="ParticipationTargetDirect">
+			<xs:enumeration value="TPA"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ParticipationTargetDevice">
+		<xs:restriction base="ParticipationTargetDirect">
+			<xs:enumeration value="NRD"/>
+			<xs:enumeration value="RDV"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ParticipationTargetLocation">
+		<xs:restriction base="ParticipationType">
+			<xs:enumeration value="DST"/>
+			<xs:enumeration value="ELOC"/>
+			<xs:enumeration value="ORG"/>
+			<xs:enumeration value="RML"/>
+			<xs:enumeration value="VIA"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ParticipationVerifier">
+		<xs:restriction base="ParticipationType">
+			<xs:enumeration value="AUTHEN"/>
+			<xs:enumeration value="LA"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="x_EncounterPerformerParticipation">
+		<xs:restriction base="ParticipationType">
+			<xs:enumeration value="CON"/>
+			<xs:enumeration value="PRF"/>
+			<xs:enumeration value="SPRF"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="x_ParticipationAuthorPerformer">
+		<xs:restriction base="ParticipationType">
+			<xs:enumeration value="AUT"/>
+			<xs:enumeration value="PRF"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="x_ParticipationVrfRespSprfWit">
+		<xs:restriction base="ParticipationType">
+			<xs:enumeration value="RESP"/>
+			<xs:enumeration value="SPRF"/>
+			<xs:enumeration value="VRF"/>
+			<xs:enumeration value="WIT"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PatientImportance">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="PaymentTerms">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="PersonDisabilityType">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="MobilityImpaired">
+		<xs:restriction base="PersonDisabilityType"/>
+	</xs:simpleType>
+	<xs:simpleType name="PostalAddressUse">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="ProbabilityDistributionType">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="ProcessingID">
+		<xs:restriction base="cs">
+		      <xs:enumeration value="D"/>
+			<xs:enumeration value="T"/>
+			<xs:enumeration value="P"/>
+		</xs:restriction> 
+	</xs:simpleType>
+	<xs:simpleType name="ProcessingMode">
+		<xs:restriction base="cs">
+		      <xs:enumeration value="A"/>
+			<xs:enumeration value="R"/>
+			<xs:enumeration value="I"/>
+			<xs:enumeration value="T"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="QueryEventStatus">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="QueryPriority">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="QueryQuantityUnit">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="QueryResponse">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="QueryStatusCode">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="Race">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAsian">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceBlackOrAfricanAmerican">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAfricanAmericanAfrican">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceHawaiianOrPacificIsland">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RacePacificIslandMelanesian">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RacePacificIslandMicronesian">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RacePacificIslandPolynesian">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceNativeAmerican">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAlaskanNative">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAlaskanIndian">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAlaskanIndianAthabascan">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceSoutheastAlaskanIndian">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceSoutheastAlaskanIndianTlingit">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceSoutheastAlaskanIndianTsimshian">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAlaskanNativeAleut">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAlaskanNativeAleutAlutiiq">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAlaskanNativeAleutBristolBay">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAlaskanNativeAleutChugach">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAlaskanNativeAleutKoniag">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAlaskanNativeAleutUnangan">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAlaskanNativeEskimo">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAlaskanNativeInupiatEskimo">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAlaskanNativeSiberianEskimo">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAlaskanNativeYupikEskimo">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndian">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianApache">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianArapaho">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianAssiniboineSioux">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianCaddo">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianCahuilla">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianCalifornia">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianChemakuan">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianCherokee">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianCheyenne">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianChickahominy">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianChinook">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianChippewa">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianChippewaCree">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianChoctaw">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianChumash">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianComanche">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianCoushatta">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianCreek">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianCupeno">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianDelaware">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianDiegueno">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianEasternTribes">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianGrosVentres">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianHoopa">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianIowa">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianIroquois">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianKickapoo">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianKiowa">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianKlallam">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianLongIsland">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianLuiseno">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianMaidu">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianMiami">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianMicmac">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianNavajo">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianNorthwestTribes">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianOttawa">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianPaiute">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianPassamaquoddy">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianPawnee">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianPeoria">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianPequot">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianPima">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianPomo">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianPonca">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianPotawatomi">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianPueblo">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianPugetSoundSalish">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianSacFox">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianSeminole">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianSerrano">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianShawnee">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianShoshone">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianShoshonePaiute">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianSioux">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianTohonoOOdham">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianUmpqua">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianUte">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianWampanoag">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianWashoe">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianWinnebago">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianYuman">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceAmericanIndianYurok">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceCanadianLatinIndian">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceWhite">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceWhiteArab">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceWhiteEuropean">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RaceWhiteMiddleEast">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="Realm">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RelationalOperator">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="SQLConjunction">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RelationshipConjunction">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="ReligiousAffiliation">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="ResponseLevel">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="ResponseModality">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RoleClass">
+		<xs:restriction base="cs">
+			<xs:enumeration value="ROL"/>
+			<xs:enumeration value="AGNT"/>
+			<xs:enumeration value="CON"/>
+			<xs:enumeration value="ECON"/>
+			<xs:enumeration value="NOK"/>
+			<xs:enumeration value="SGNOFF"/>
+			<xs:enumeration value="GUARD"/>
+			<xs:enumeration value="EMP"/>
+			<xs:enumeration value="MIL"/>
+			<xs:enumeration value="CIT"/>
+			<xs:enumeration value="CRINV"/>
+			<xs:enumeration value="CRSPNSR"/>
+			<xs:enumeration value="GUAR"/>
+			<xs:enumeration value="PAT"/>
+			<xs:enumeration value="RESBJ"/>
+			<xs:enumeration value="STD"/>
+			<xs:enumeration value="PRS"/>
+			<xs:enumeration value="DST"/>
+			<xs:enumeration value="RET"/>
+			<xs:enumeration value="MANU"/>
+			<xs:enumeration value="THER"/>
+			<xs:enumeration value="SDLOC"/>
+			<xs:enumeration value="ISDLOC"/>
+			<xs:enumeration value="ACCESS"/>
+			<xs:enumeration value="BIRTHPL"/>
+			<xs:enumeration value="EXPR"/>
+			<xs:enumeration value="HLD"/>
+			<xs:enumeration value="IDENT"/>
+			<xs:enumeration value="MNT"/>
+			<xs:enumeration value="OWN"/>
+			<xs:enumeration value="RGPR"/>
+			<xs:enumeration value="TERR"/>
+			<xs:enumeration value="WRTE"/>
+			<xs:enumeration value="GEN"/>
+			<xs:enumeration value="GRIC"/>
+			<xs:enumeration value="INST"/>
+			<xs:enumeration value="SUBS"/>
+			<xs:enumeration value="INGR"/>
+			<xs:enumeration value="IACT"/>
+			<xs:enumeration value="COLR"/>
+			<xs:enumeration value="FLVR"/>
+			<xs:enumeration value="PRSV"/>
+			<xs:enumeration value="STBL"/>
+			<xs:enumeration value="ACTI"/>
+			<xs:enumeration value="ACTM"/>
+			<xs:enumeration value="ADTV"/>
+			<xs:enumeration value="BASE"/>
+			<xs:enumeration value="LOCE"/>
+			<xs:enumeration value="STOR"/>
+			<xs:enumeration value="SPEC"/>
+			<xs:enumeration value="ALQT"/>
+			<xs:enumeration value="ISLT"/>
+			<xs:enumeration value="CONT"/>
+			<xs:enumeration value="MBR"/>
+			<xs:enumeration value="PART"/>
+			<xs:enumeration value="HLTHCHRT"/>
+			<xs:enumeration value="COVPTY"/>
+			<xs:enumeration value="POLHOLD"/>
+			<xs:enumeration value="SPNSR"/>
+			<xs:enumeration value="UNDWRT"/>
+			<xs:enumeration value="PAYEE"/>
+			<xs:enumeration value="PAYOR"/>
+			<xs:enumeration value="LIC"/>
+			<xs:enumeration value="DSDLOC"/>
+			<xs:enumeration value="NOT"/>
+			<xs:enumeration value="PROV"/>
+			<xs:enumeration value="ASSIGNED"/>
+			<xs:enumeration value="QUAL"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RoleClassRoot">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RoleClassAssociative">
+		<xs:restriction base="RoleClass">
+			<xs:enumeration value="LIC"/>
+			<xs:enumeration value="NOT"/>
+			<xs:enumeration value="PROV"/>
+			<xs:enumeration value="AGNT"/>
+			<xs:enumeration value="ASSIGNED"/>
+			<xs:enumeration value="CON"/>
+			<xs:enumeration value="ECON"/>
+			<xs:enumeration value="NOK"/>
+			<xs:enumeration value="SGNOFF"/>
+			<xs:enumeration value="GUARD"/>
+			<xs:enumeration value="EMP"/>
+			<xs:enumeration value="MIL"/>
+			<xs:enumeration value="CIT"/>
+			<xs:enumeration value="COVPTY"/>
+			<xs:enumeration value="CRINV"/>
+			<xs:enumeration value="CRSPNSR"/>
+			<xs:enumeration value="GUAR"/>
+			<xs:enumeration value="PAT"/>
+			<xs:enumeration value="PAYEE"/>
+			<xs:enumeration value="PAYOR"/>
+			<xs:enumeration value="POLHOLD"/>
+			<xs:enumeration value="QUAL"/>
+			<xs:enumeration value="RESBJ"/>
+			<xs:enumeration value="SPNSR"/>
+			<xs:enumeration value="STD"/>
+			<xs:enumeration value="UNDWRT"/>
+			<xs:enumeration value="PRS"/>
+			<xs:enumeration value="DST"/>
+			<xs:enumeration value="RET"/>
+			<xs:enumeration value="MANU"/>
+			<xs:enumeration value="THER"/>
+			<xs:enumeration value="SDLOC"/>
+			<xs:enumeration value="DSDLOC"/>
+			<xs:enumeration value="ISDLOC"/>
+			<xs:enumeration value="ACCESS"/>
+			<xs:enumeration value="BIRTHPL"/>
+			<xs:enumeration value="EXPR"/>
+			<xs:enumeration value="HLD"/>
+			<xs:enumeration value="HLTHCHRT"/>
+			<xs:enumeration value="IDENT"/>
+			<xs:enumeration value="MNT"/>
+			<xs:enumeration value="OWN"/>
+			<xs:enumeration value="RGPR"/>
+			<xs:enumeration value="TERR"/>
+			<xs:enumeration value="WRTE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RoleClassMutualRelationship">
+		<xs:restriction base="RoleClassAssociative">
+			<xs:enumeration value="LIC"/>
+			<xs:enumeration value="DSDLOC"/>
+			<xs:enumeration value="NOT"/>
+			<xs:enumeration value="PROV"/>
+			<xs:enumeration value="AGNT"/>
+			<xs:enumeration value="ASSIGNED"/>
+			<xs:enumeration value="CON"/>
+			<xs:enumeration value="ECON"/>
+			<xs:enumeration value="NOK"/>
+			<xs:enumeration value="SGNOFF"/>
+			<xs:enumeration value="GUARD"/>
+			<xs:enumeration value="EMP"/>
+			<xs:enumeration value="MIL"/>
+			<xs:enumeration value="CIT"/>
+			<xs:enumeration value="COVPTY"/>
+			<xs:enumeration value="CRINV"/>
+			<xs:enumeration value="CRSPNSR"/>
+			<xs:enumeration value="GUAR"/>
+			<xs:enumeration value="PAT"/>
+			<xs:enumeration value="PAYEE"/>
+			<xs:enumeration value="PAYOR"/>
+			<xs:enumeration value="POLHOLD"/>
+			<xs:enumeration value="QUAL"/>
+			<xs:enumeration value="RESBJ"/>
+			<xs:enumeration value="SPNSR"/>
+			<xs:enumeration value="STD"/>
+			<xs:enumeration value="UNDWRT"/>
+			<xs:enumeration value="PRS"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RoleClassRelationshipFormal">
+		<xs:restriction base="RoleClassMutualRelationship">
+			<xs:enumeration value="LIC"/>
+			<xs:enumeration value="DSDLOC"/>
+			<xs:enumeration value="NOT"/>
+			<xs:enumeration value="PROV"/>
+			<xs:enumeration value="AGNT"/>
+			<xs:enumeration value="ASSIGNED"/>
+			<xs:enumeration value="CON"/>
+			<xs:enumeration value="ECON"/>
+			<xs:enumeration value="NOK"/>
+			<xs:enumeration value="SGNOFF"/>
+			<xs:enumeration value="GUARD"/>
+			<xs:enumeration value="EMP"/>
+			<xs:enumeration value="MIL"/>
+			<xs:enumeration value="CIT"/>
+			<xs:enumeration value="COVPTY"/>
+			<xs:enumeration value="CRINV"/>
+			<xs:enumeration value="CRSPNSR"/>
+			<xs:enumeration value="GUAR"/>
+			<xs:enumeration value="PAT"/>
+			<xs:enumeration value="PAYEE"/>
+			<xs:enumeration value="PAYOR"/>
+			<xs:enumeration value="POLHOLD"/>
+			<xs:enumeration value="QUAL"/>
+			<xs:enumeration value="RESBJ"/>
+			<xs:enumeration value="SPNSR"/>
+			<xs:enumeration value="STD"/>
+			<xs:enumeration value="UNDWRT"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RoleClassAgent">
+		<xs:restriction base="RoleClassRelationshipFormal">
+			<xs:enumeration value="ASSIGNED"/>
+			<xs:enumeration value="CON"/>
+			<xs:enumeration value="ECON"/>
+			<xs:enumeration value="NOK"/>
+			<xs:enumeration value="SGNOFF"/>
+			<xs:enumeration value="GUARD"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RoleClassContact">
+		<xs:restriction base="RoleClassRelationshipFormal">
+			<xs:enumeration value="ECON"/>
+			<xs:enumeration value="NOK"/>
+		</xs:restriction>
+		<!-- this is not quite right -->
+	</xs:simpleType>
+	<xs:simpleType name="RoleClassEmployee">
+		<xs:restriction base="RoleClassRelationshipFormal">
+			<xs:enumeration value="MIL"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RoleClassPassive">
+		<xs:restriction base="RoleClassAssociative">
+			<xs:enumeration value="DST"/>
+			<xs:enumeration value="RET"/>
+			<xs:enumeration value="MANU"/>
+			<xs:enumeration value="THER"/>
+			<xs:enumeration value="SDLOC"/>
+			<xs:enumeration value="DSDLOC"/>
+			<xs:enumeration value="ISDLOC"/>
+			<xs:enumeration value="ACCESS"/>
+			<xs:enumeration value="BIRTHPL"/>
+			<xs:enumeration value="EXPR"/>
+			<xs:enumeration value="HLD"/>
+			<xs:enumeration value="HLTHCHRT"/>
+			<xs:enumeration value="IDENT"/>
+			<xs:enumeration value="MNT"/>
+			<xs:enumeration value="OWN"/>
+			<xs:enumeration value="RGPR"/>
+			<xs:enumeration value="TERR"/>
+			<xs:enumeration value="WRTE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RoleClassDistributedMaterial">
+		<xs:restriction base="RoleClassPassive">
+			<xs:enumeration value="RET"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RoleClassManufacturedProduct">
+		<xs:restriction base="RoleClassPassive">
+			<xs:enumeration value="THER"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RoleClassServiceDeliveryLocation">
+		<xs:restriction base="RoleClassPassive">
+			<xs:enumeration value="DSDLOC"/>
+			<xs:enumeration value="ISDLOC"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RoleClassOntological">
+		<xs:restriction base="RoleClass">
+			<xs:enumeration value="GEN"/>
+			<xs:enumeration value="GRIC"/>
+			<xs:enumeration value="INST"/>
+			<xs:enumeration value="SUBS"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RoleClassIsSpeciesEntity">
+		<xs:restriction base="RoleClassOntological">
+			<xs:enumeration value="GRIC"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RoleClassPartitive">
+		<xs:restriction base="RoleClass">
+			<xs:enumeration value="INGR"/>
+			<xs:enumeration value="IACT"/>
+			<xs:enumeration value="COLR"/>
+			<xs:enumeration value="FLVR"/>
+			<xs:enumeration value="PRSV"/>
+			<xs:enumeration value="STBL"/>
+			<xs:enumeration value="ACTI"/>
+			<xs:enumeration value="ACTM"/>
+			<xs:enumeration value="ADTV"/>
+			<xs:enumeration value="BASE"/>
+			<xs:enumeration value="LOCE"/>
+			<xs:enumeration value="STOR"/>
+			<xs:enumeration value="SPEC"/>
+			<xs:enumeration value="ALQT"/>
+			<xs:enumeration value="ISLT"/>
+			<xs:enumeration value="CONT"/>
+			<xs:enumeration value="MBR"/>
+			<xs:enumeration value="PART"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RoleClassIngredientEntity">
+		<xs:restriction base="RoleClassPartitive">
+			<xs:enumeration value="IACT"/>
+			<xs:enumeration value="COLR"/>
+			<xs:enumeration value="FLVR"/>
+			<xs:enumeration value="PRSV"/>
+			<xs:enumeration value="STBL"/>
+			<xs:enumeration value="ACTI"/>
+			<xs:enumeration value="ACTM"/>
+			<xs:enumeration value="ADTV"/>
+			<xs:enumeration value="BASE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RoleClassInactiveIngredient">
+		<xs:restriction base="RoleClassIngredientEntity">
+			<xs:enumeration value="COLR"/>
+			<xs:enumeration value="FLVR"/>
+			<xs:enumeration value="PRSV"/>
+			<xs:enumeration value="STBL"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RoleClassLocatedEntity">
+		<xs:restriction base="RoleClassPartitive">
+			<xs:enumeration value="STOR"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RoleClassSpecimen">
+		<xs:restriction base="RoleClassPartitive">
+			<xs:enumeration value="ALQT"/>
+			<xs:enumeration value="ISLT"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="x_InformationRecipientRole">
+		<xs:restriction base="RoleClass">
+			<xs:enumeration value="ASSIGNED"/>
+			<xs:enumeration value="HLTHCHRT"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="x_RoleClassCoverage">
+		<xs:restriction base="RoleClass">
+			<xs:enumeration value="COVPTY"/>
+			<xs:enumeration value="POLHOLD"/>
+			<xs:enumeration value="SPNSR"/>
+			<xs:enumeration value="UNDWRT"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="x_RoleClassCoverageInvoice">
+		<xs:restriction base="RoleClass">
+			<xs:enumeration value="PAYEE"/>
+			<xs:enumeration value="PAYOR"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="x_RoleClassCredentialedEntity">
+		<xs:restriction base="RoleClass">
+			<xs:enumeration value="LIC"/>
+			<xs:enumeration value="DSDLOC"/>
+			<xs:enumeration value="NOT"/>
+			<xs:enumeration value="PROV"/>
+			<xs:enumeration value="ASSIGNED"/>
+			<xs:enumeration value="QUAL"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="LicensedEntityRole">
+		<xs:restriction base="RoleClassRelationshipFormal">
+			<xs:enumeration value="DSDLOC"/>
+			<xs:enumeration value="NOT"/>
+			<xs:enumeration value="PROV"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RoleCode">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="CertifiedEntityType">
+		<xs:restriction base="RoleCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="PractitionerCertifiedEntityType">
+		<xs:restriction base="CertifiedEntityType"/>
+	</xs:simpleType>
+	<xs:simpleType name="ClinicalOrganizationRoleType">
+		<xs:restriction base="RoleCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="ContactRoleType">
+		<xs:restriction base="RoleCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="AdministrativeContactRoleType">
+		<xs:restriction base="ContactRoleType"/>
+	</xs:simpleType>
+	<xs:simpleType name="CoverageRoleType">
+		<xs:restriction base="RoleCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="DeliveryLocationSite">
+		<xs:restriction base="RoleCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="ClinicalLocationRoleType">
+		<xs:restriction base="DeliveryLocationSite"/>
+	</xs:simpleType>
+	<xs:simpleType name="DiagTherPracticeSetting">
+		<xs:restriction base="ClinicalLocationRoleType"/>
+	</xs:simpleType>
+	<xs:simpleType name="CVDiagTherPracticeSetting">
+		<xs:restriction base="DiagTherPracticeSetting"/>
+	</xs:simpleType>
+	<xs:simpleType name="GIDiagTherPracticeSetting">
+		<xs:restriction base="DiagTherPracticeSetting"/>
+	</xs:simpleType>
+	<xs:simpleType name="RadDiagTherPracticeSetting">
+		<xs:restriction base="DiagTherPracticeSetting"/>
+	</xs:simpleType>
+	<xs:simpleType name="HospitalPracticeSetting">
+		<xs:restriction base="ClinicalLocationRoleType"/>
+	</xs:simpleType>
+	<xs:simpleType name="ChronicCareFacility">
+		<xs:restriction base="HospitalPracticeSetting"/>
+	</xs:simpleType>
+	<xs:simpleType name="MilitaryHospital">
+		<xs:restriction base="HospitalPracticeSetting"/>
+	</xs:simpleType>
+	<xs:simpleType name="HospitalUnitPracticeSetting">
+		<xs:restriction base="ClinicalLocationRoleType"/>
+	</xs:simpleType>
+	<xs:simpleType name="ERPracticeSetting">
+		<xs:restriction base="HospitalUnitPracticeSetting"/>
+	</xs:simpleType>
+	<xs:simpleType name="ICUPracticeSetting">
+		<xs:restriction base="HospitalUnitPracticeSetting"/>
+	</xs:simpleType>
+	<xs:simpleType name="PedsPracticeSetting">
+		<xs:restriction base="HospitalUnitPracticeSetting"/>
+	</xs:simpleType>
+	<xs:simpleType name="PedsICUPracticeSetting">
+		<xs:restriction base="PedsPracticeSetting"/>
+	</xs:simpleType>
+	<xs:simpleType name="NursingOrCustodialCarePracticeSetting">
+		<xs:restriction base="ClinicalLocationRoleType"/>
+	</xs:simpleType>
+	<xs:simpleType name="OutpatientFacilityPracticeSetting">
+		<xs:restriction base="ClinicalLocationRoleType"/>
+	</xs:simpleType>
+	<xs:simpleType name="CardClinPracticeSetting">
+		<xs:restriction base="OutpatientFacilityPracticeSetting"/>
+	</xs:simpleType>
+	<xs:simpleType name="GIClinicPracticeSetting">
+		<xs:restriction base="OutpatientFacilityPracticeSetting"/>
+	</xs:simpleType>
+	<xs:simpleType name="HemClinPracticeSetting">
+		<xs:restriction base="OutpatientFacilityPracticeSetting"/>
+	</xs:simpleType>
+	<xs:simpleType name="IDClinPracticeSetting">
+		<xs:restriction base="OutpatientFacilityPracticeSetting"/>
+	</xs:simpleType>
+	<xs:simpleType name="MedOncClinPracticeSetting">
+		<xs:restriction base="OutpatientFacilityPracticeSetting"/>
+	</xs:simpleType>
+	<xs:simpleType name="NephClinPracticeSetting">
+		<xs:restriction base="OutpatientFacilityPracticeSetting"/>
+	</xs:simpleType>
+	<xs:simpleType name="OrthoClinPracticeSetting">
+		<xs:restriction base="OutpatientFacilityPracticeSetting"/>
+	</xs:simpleType>
+	<xs:simpleType name="PedsClinPracticeSetting">
+		<xs:restriction base="OutpatientFacilityPracticeSetting"/>
+	</xs:simpleType>
+	<xs:simpleType name="RheumClinPracticeSetting">
+		<xs:restriction base="OutpatientFacilityPracticeSetting"/>
+	</xs:simpleType>
+	<xs:simpleType name="SurgClinPracticeSetting">
+		<xs:restriction base="OutpatientFacilityPracticeSetting"/>
+	</xs:simpleType>
+	<xs:simpleType name="ResidentialTreatmentPracticeSetting">
+		<xs:restriction base="ClinicalLocationRoleType"/>
+	</xs:simpleType>
+	<xs:simpleType name="EducationCoverageRoleType">
+		<xs:restriction base="RoleCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="FamilyCoverageRoleType">
+		<xs:restriction base="RoleCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="FamilyDependentCoverageRoleType">
+		<xs:restriction base="FamilyCoverageRoleType"/>
+	</xs:simpleType>
+	<xs:simpleType name="LivingSituationalRoleType">
+		<xs:restriction base="RoleCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="LivingSubjectProductionClass">
+		<xs:restriction base="RoleCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="MemberRoleType">
+		<xs:restriction base="RoleCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="NDCRelatedDrugEntityType">
+		<xs:restriction base="RoleCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="PersonalRelationshipRoleType">
+		<xs:restriction base="RoleCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="FamilyRelationshipRoleType">
+		<xs:restriction base="PersonalRelationshipRoleType"/>
+	</xs:simpleType>
+	<xs:simpleType name="Child">
+		<xs:restriction base="FamilyRelationshipRoleType"/>
+	</xs:simpleType>
+	<xs:simpleType name="NaturalChild">
+		<xs:restriction base="Child"/>
+	</xs:simpleType>
+	<xs:simpleType name="Grandparent">
+		<xs:restriction base="FamilyRelationshipRoleType"/>
+	</xs:simpleType>
+	<xs:simpleType name="Parent">
+		<xs:restriction base="FamilyRelationshipRoleType"/>
+	</xs:simpleType>
+	<xs:simpleType name="Sibling">
+		<xs:restriction base="FamilyRelationshipRoleType"/>
+	</xs:simpleType>
+	<xs:simpleType name="SpecimenRoleType">
+		<xs:restriction base="RoleCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="QualitySpecimenRoleType">
+		<xs:restriction base="SpecimenRoleType"/>
+	</xs:simpleType>
+	<xs:simpleType name="x_AccommodationRequestorRoleType">
+		<xs:restriction base="RoleCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="x_PayeeRelationshipRoleType">
+		<xs:restriction base="RoleCode"/>
+	</xs:simpleType>
+	<xs:simpleType name="RoleLinkType">
+		<xs:restriction base="cs">
+			<xs:enumeration value="DIRAUTH"/>
+			<xs:enumeration value="INDAUTH"/>
+			<xs:enumeration value="PART"/>
+			<xs:enumeration value="REPL"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="RoleStatus">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RoleStatusNormal">
+		<xs:restriction base="RoleStatus"/>
+	</xs:simpleType>
+	<xs:simpleType name="RouteOfAdministration">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="RouteByMethod">
+		<xs:restriction base="RouteOfAdministration"/>
+	</xs:simpleType>
+	<xs:simpleType name="Chew">
+		<xs:restriction base="RouteByMethod"/>
+	</xs:simpleType>
+	<xs:simpleType name="Diffusion">
+		<xs:restriction base="RouteByMethod"/>
+	</xs:simpleType>
+	<xs:simpleType name="Dissolve">
+		<xs:restriction base="RouteByMethod"/>
+	</xs:simpleType>
+	<xs:simpleType name="Douche">
+		<xs:restriction base="RouteByMethod"/>
+	</xs:simpleType>
+	<xs:simpleType name="ElectroOsmosisRoute">
+		<xs:restriction base="RouteByMethod"/>
+	</xs:simpleType>
+	<xs:simpleType name="Enema">
+		<xs:restriction base="RouteByMethod"/>
+	</xs:simpleType>
+	<xs:simpleType name="Flush">
+		<xs:restriction base="RouteByMethod"/>
+	</xs:simpleType>
+	<xs:simpleType name="Implantation">
+		<xs:restriction base="RouteByMethod"/>
+	</xs:simpleType>
+	<xs:simpleType name="InfiltrationRoute">
+		<xs:restriction base="RouteByMethod"/>
+	</xs:simpleType>
+	<xs:simpleType name="Infusion">
+		<xs:restriction base="RouteByMethod"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntravenousInfusion">
+		<xs:restriction base="Infusion"/>
+	</xs:simpleType>
+	<xs:simpleType name="Inhalation">
+		<xs:restriction base="RouteByMethod"/>
+	</xs:simpleType>
+	<xs:simpleType name="NasalInhalation">
+		<xs:restriction base="Inhalation"/>
+	</xs:simpleType>
+	<xs:simpleType name="NebulizationInhalation">
+		<xs:restriction base="Inhalation"/>
+	</xs:simpleType>
+	<xs:simpleType name="OralInhalation">
+		<xs:restriction base="Inhalation"/>
+	</xs:simpleType>
+	<xs:simpleType name="Injection">
+		<xs:restriction base="RouteByMethod"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntraarterialInjection">
+		<xs:restriction base="Injection"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntracardiacInjection">
+		<xs:restriction base="Injection"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntracoronaryInjection">
+		<xs:restriction base="Injection"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntramuscularInjection">
+		<xs:restriction base="Injection"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntravenousInjection">
+		<xs:restriction base="Injection"/>
+	</xs:simpleType>
+	<xs:simpleType name="Insertion">
+		<xs:restriction base="RouteByMethod"/>
+	</xs:simpleType>
+	<xs:simpleType name="Instillation">
+		<xs:restriction base="RouteByMethod"/>
+	</xs:simpleType>
+	<xs:simpleType name="RectalInstillation">
+		<xs:restriction base="Instillation"/>
+	</xs:simpleType>
+	<xs:simpleType name="IontophoresisRoute">
+		<xs:restriction base="RouteByMethod"/>
+	</xs:simpleType>
+	<xs:simpleType name="Irrigation">
+		<xs:restriction base="RouteByMethod"/>
+	</xs:simpleType>
+	<xs:simpleType name="UrinaryBladderIrrigation">
+		<xs:restriction base="Irrigation"/>
+	</xs:simpleType>
+	<xs:simpleType name="LavageRoute">
+		<xs:restriction base="RouteByMethod"/>
+	</xs:simpleType>
+	<xs:simpleType name="MucosalAbsorptionRoute">
+		<xs:restriction base="RouteByMethod"/>
+	</xs:simpleType>
+	<xs:simpleType name="Nebulization">
+		<xs:restriction base="RouteByMethod"/>
+	</xs:simpleType>
+	<xs:simpleType name="Rinse">
+		<xs:restriction base="RouteByMethod"/>
+	</xs:simpleType>
+	<xs:simpleType name="SuppositoryRoute">
+		<xs:restriction base="RouteByMethod"/>
+	</xs:simpleType>
+	<xs:simpleType name="Swish">
+		<xs:restriction base="RouteByMethod"/>
+	</xs:simpleType>
+	<xs:simpleType name="TopicalAbsorptionRoute">
+		<xs:restriction base="RouteByMethod"/>
+	</xs:simpleType>
+	<xs:simpleType name="TopicalApplication">
+		<xs:restriction base="RouteByMethod"/>
+	</xs:simpleType>
+	<xs:simpleType name="RouteBySite">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="AmnioticFluidSacRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="BiliaryRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="BodySurfaceRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="BuccalMucosaRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="CecostomyRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="CervicalRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="DentalRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="EndocervicalRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="EnteralRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="EpiduralRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="ExtraAmnioticRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="ExtracorporealCirculationRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="GastricRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="GenitourinaryRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="GingivalRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="HairRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="InterameningealRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="InterstitialRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntraabdominalRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntraarticularRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntraaterialRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntrabronchialRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntrabursalRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntracardiacRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntracartilaginousRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntracaudalRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntracavernosalRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntracavitaryRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntracerebralRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntracervicalRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntracisternalRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntracornealRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntracoronalRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntracoronaryRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntracorpusCavernosumRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntradermalRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntradiscalRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntraductalRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntraduodenalRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntraduralRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntraepidermalRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntraepithelialRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntraesophagealRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntragastricRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntrailealRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntralesionalRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntraluminalRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntralymphaticRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntramedullaryRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntramuscularRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntraocularRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntraosseousRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntraovarianRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntrapericardialRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntraperitonealRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntrapleuralRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntraprostaticRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntrapulmonaryRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntrasinalRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntraspinalRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntrasternalRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntrasynovialRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntratendinousRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntratesticularRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntrathecalRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntrathoracicRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntratrachealRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntratubularRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntratumorRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntratympanicRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntrauterineRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntravascularRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntravenousRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntraventricularRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntravesicleRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="IntravitrealRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="JejunumRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="LacrimalPunctaRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="LaryngealRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="LingualRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="MucousMembraneRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="NailRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="NasalRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="OphthalmicRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="OromucosalRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="OropharyngealRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="OticRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="ParanasalSinusesRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="ParenteralRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="PerianalRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="PeriarticularRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="PeriduralRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="PerinealRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="PerineuralRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="PeriodontalRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="PulmonaryRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="RectalRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="RespiratoryTractRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="RetrobulbarRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="ScalpRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="SinusUnspecifiedRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="SkinRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="SoftTissueRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="SubarachnoidRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="SubconjunctivalRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="SubcutaneousRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="SublesionalRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="SublingualRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="SubmucosalRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="TracheostomyRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="Transdermal">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="TransmucosalRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="TransplacentalRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="TranstrachealRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="TranstympanicRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="UreteralRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="UrethralRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="UrinaryBladderRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="UrinaryTractRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="VaginalRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="VitreousHumourRoute">
+		<xs:restriction base="RouteBySite"/>
+	</xs:simpleType>
+	<xs:simpleType name="Sequencing">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="SetOperator">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="SpecimenType">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="SubstanceAdminSubstitution">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="SubstanceAdminGenericSubstitution">
+		<xs:restriction base="SubstanceAdminSubstitution"/>
+	</xs:simpleType>
+	<xs:simpleType name="SubstitutionCondition">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="Conditional">
+		<xs:restriction base="SubstitutionCondition"/>
+	</xs:simpleType>
+	<xs:simpleType name="TableCellHorizontalAlign">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="TableCellScope">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="TableCellVerticalAlign">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="TableFrame">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="TableRules">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="TargetAwareness">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="TelecommunicationAddressUse">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="AddressUse">
+		<xs:restriction base="TelecommunicationAddressUse"/>
+	</xs:simpleType>
+	<xs:simpleType name="HomeAddressUse">
+		<xs:restriction base="AddressUse"/>
+	</xs:simpleType>
+	<xs:simpleType name="TimingEvent">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="TribalEntityUS">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="NativeEntityAlaska">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="NativeEntityContiguous">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="UnitsOfMeasureCaseInsensitive">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="UnitOfMeasureAtomBaseUnitInsens">
+		<xs:restriction base="UnitsOfMeasureCaseInsensitive"/>
+	</xs:simpleType>
+	<xs:simpleType name="UnitOfMeasureAtomInsens">
+		<xs:restriction base="UnitsOfMeasureCaseInsensitive"/>
+	</xs:simpleType>
+	<xs:simpleType name="UnitOfMeasurePrefixInsens">
+		<xs:restriction base="UnitsOfMeasureCaseInsensitive"/>
+	</xs:simpleType>
+	<xs:simpleType name="UnitsOfMeasureCaseSensitive">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="UnitOfMeasureAtomBaseUnitSens">
+		<xs:restriction base="UnitsOfMeasureCaseSensitive"/>
+	</xs:simpleType>
+	<xs:simpleType name="UnitOfMeasureAtomSens">
+		<xs:restriction base="UnitsOfMeasureCaseSensitive"/>
+	</xs:simpleType>
+	<xs:simpleType name="UnitOfMeasurePrefixSens">
+		<xs:restriction base="UnitsOfMeasureCaseSensitive"/>
+	</xs:simpleType>
+	<xs:simpleType name="URLScheme">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="VaccineManufacturer">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="VaccineType">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="ValueSetOperator">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="VocabularyDomainQualifier">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="Extensibility">
+		<xs:restriction base="VocabularyDomainQualifier"/>
+	</xs:simpleType>
+	<xs:simpleType name="RealmOfUse">
+		<xs:restriction base="Extensibility"/>
+	</xs:simpleType>
+	<xs:simpleType name="x_OrganizationNamePartType">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="x_PersonNamePartType">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="CountryCode">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="CountryCodeAlpha2">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="CountryCodeAlpha3">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="CountryCodeNumeric3">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="DiagnosisICD9CM">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="DocumentSectionType">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="DocumentType">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="ECGAnnotationTypeMDC">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="ECGBeatTypeMDC">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="ECGContourObservationTypeMDC">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="ECGControlVariableMDC">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="ECGLeadTypeMDC">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="ECGNoiseTypeMDC">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="ECGRhythmTypeMDC">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="ECGWaveComponentTypeMDC">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="EmploymentStatusUB92">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="EncounterDischargeDisposition">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="HumanLanguage">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="IndustryClassificationSystem">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="LogicalObservationIdentifierNamesAndCodes">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+	<xs:simpleType name="MaritalStatusUB92">
+		<xs:restriction base="cs"/>
+	</xs:simpleType>
+</xs:schema>

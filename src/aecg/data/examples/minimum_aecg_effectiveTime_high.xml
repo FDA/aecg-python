@@ -1,0 +1,60 @@
+<!-- OID "2.16.840.1.113883.3" is an example OID identifying the Sponsor organization -->
+<AnnotatedECG xmlns="urn:hl7-org:v3" xmlns:voc="urn:hl7-org:v3/voc"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="urn:hl7-org:v3 ../schema/PORT_MT020001.xsd" type="Observation">
+	<id root="61d1a24f-b47e-41aa-ae95-f8ac302f4eeb"/>
+	<code code="93000" codeSystem="2.16.840.1.113883.6.12" codeSystemName="CPT-4"/>
+	<effectiveTime>
+		<high value="20021122091010"/>
+	</effectiveTime>
+	<componentOf>
+		<timepointEvent>
+			<componentOf>
+				<subjectAssignment>
+					<subject>
+						<trialSubject>
+							<id root="2.16.840.1.113883.3.456" extension="SBJ-123"/>
+						</trialSubject>
+					</subject>
+					<componentOf>
+						<clinicalTrial>
+							<id root="2.16.840.1.113883.3.123" extension="PUK-123-TRL-1"/>
+						</clinicalTrial>
+					</componentOf>
+				</subjectAssignment>
+			</componentOf>
+		</timepointEvent>
+	</componentOf>
+	<component>
+		<series>
+			<code code="RHYTHM" codeSystem="2.16.840.1.113883.5.4"/>
+			<effectiveTime>
+				<low value="20021122091000"/>
+				<high value="20021122091010"/>
+			</effectiveTime>
+			<component>
+				<sequenceSet>
+					<component>
+						<sequence>
+							<code code="TIME_ABSOLUTE" codeSystem="2.16.840.1.113883.5.4"/>
+							<value xsi:type="GLIST_TS">
+								<head value="20021122091000"/>
+								<increment value="0.002" unit="s"/>
+							</value>
+						</sequence>
+					</component>
+					<component>
+						<sequence classCode="OBS">
+							<code code="MDC_ECG_LEAD_II" codeSystem="2.16.840.1.113883.6.24"/>
+							<value xsi:type="SLIST_PQ">
+								<origin value="0" unit="uV"/>
+								<scale value="2.5" unit="uV"/>
+								<digits>-2 -2 -2 -2 -3 -4 -3 -5 -5 -4 -6 -9 -9 </digits>
+							</value>
+						</sequence>
+					</component>
+				</sequenceSet>
+			</component>
+		</series>
+	</component>
+</AnnotatedECG>

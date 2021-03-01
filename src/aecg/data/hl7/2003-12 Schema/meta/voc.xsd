@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema
+		xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		xmlns="urn:hl7-org:v3:meta:voc"
+		xmlns:html="http://www.w3.org/1999/xhtml"
+		targetNamespace="urn:hl7-org:v3:meta:voc"
+		elementFormDefault="qualified">
+
+   <xs:annotation>
+      <xs:documentation>
+         <html:p>
+            the following declaraions are for use in appinfos for the
+            vocabulary schema(s)
+         </html:p>
+      </xs:documentation>
+   </xs:annotation>
+
+   <xs:element name='leafTerm' type='vocabItem'/>
+   <xs:element name='specDomain' type='vocabItem'/>
+   <xs:complexType name='vocabItem'>
+      <xs:attribute name='conceptID' type='xs:integer'>
+         <xs:annotation>
+            <xs:documentation>
+               <html:p>
+                  this is the conceptID value
+               </html:p>
+            </xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name='printName' type='xs:string'>
+         <xs:annotation>
+            <xs:documentation>
+               <html:p>
+                  this is the print name association with the
+                  current concept
+               </html:p>
+            </xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name='id' type='xs:NMTOKEN'>
+         <xs:annotation>
+            <xs:documentation>
+               <html:p>
+                  this is a key to the item's full expression in
+                  the XML representation of the vocabulary.  Within
+                  the vocab.xml it's value is an XML ID.  Here it is
+                  just an NMTOKEN.
+               </html:p>
+               <html:p>
+                  To get the full expression, do something like:
+                  <![CDATA[
+                     <xsl:key name='id' match='*[@id]' use='@id'/>
+                     <xsl:variable name='nodes' select='document(vocab.xml)'/>
+                     <xsl:variable name='item' select='key("id", $nodes)'/>
+                  ]]>
+                  <!-- actually, I think the above is incorrect, but
+                  I'll correct it later -->
+               </html:p>
+            </xs:documentation>
+         </xs:annotation>
+      </xs:attribute>
+   </xs:complexType>
+</xs:schema>
